@@ -1,0 +1,174 @@
+/* Components — баннеры, экспедиция, блоки страниц */
+
+.page-hero {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.page-hero__img,
+.page-banner__img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.page-banner {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.page-header {
+  text-align: center;
+  padding: 0 var(--space-sm);
+}
+
+/* Главная — экспедиция */
+.expedition-card {
+  padding: var(--space-lg);
+}
+
+.expedition-card__title {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-ui);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.expedition-card__subtitle {
+  margin: 0 0 var(--space-md);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.expedition-route {
+  list-style: none;
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.expedition-route__link {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--parchment);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(26, 40, 64, 0.08);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.expedition-route__link:hover {
+  background: var(--white);
+  border-color: var(--gold-light);
+  color: var(--navy);
+}
+
+.expedition-route__icon {
+  margin-right: 0.25rem;
+}
+
+.home-books {
+  margin-top: var(--space-md);
+}
+
+.home-books__grid {
+  margin-top: var(--space-md);
+}
+
+/* Выбор книги на странице героев */
+.book-picker {
+  list-style: none;
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-md);
+}
+
+.book-picker__btn {
+  width: 100%;
+  padding: var(--space-sm);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--parchment-card);
+}
+
+.book-picker__btn.is-active {
+  border-color: var(--navy-light);
+  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.15);
+}
+
+.book-picker__cover {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.book-picker__title {
+  display: block;
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.hero-list__empty,
+.book-catalog__empty,
+.cards-empty,
+.passports-empty,
+.trials-empty,
+.section-soon,
+.kit-list__empty {
+  margin: 0;
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.guide-block {
+  padding: var(--space-lg);
+}
+
+.guide-block__title {
+  margin: 0 0 var(--space-md);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.guide-block__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--ink-soft);
+}
+
+.guide-block__list li {
+  margin-bottom: var(--space-sm);
+  line-height: 1.55;
+}
+
+.guide-block__list li:last-child {
+  margin-bottom: 0;
+}
+
+.hero-books-label {
+  margin: 0 0 var(--space-sm);
+  font-weight: 800;
+  color: var(--navy);
+  font-size: 1rem;
+}

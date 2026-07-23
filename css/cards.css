@@ -1,0 +1,296 @@
+/* Cards — все типы карточек */
+
+.book-catalog__list,
+.hero-list,
+.cards-list,
+.passports-list,
+.trials-list,
+.kit-list,
+.comics-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-md);
+}
+
+.book-catalog__list {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.kit-list {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Книга */
+.book-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+.book-card__cover {
+  aspect-ratio: 3 / 4;
+  min-height: 180px;
+  overflow: hidden;
+  background: var(--parchment);
+}
+
+.book-card__cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-md);
+  gap: 0.35rem;
+}
+
+.book-card__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.book-card__author {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.book-card__route {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.book-card__link {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+}
+
+/* Герой */
+.hero-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+.hero-card__portrait {
+  aspect-ratio: 1;
+  min-height: 180px;
+  overflow: hidden;
+  background: var(--parchment);
+}
+
+.hero-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-card__body {
+  padding: var(--space-md);
+}
+
+.hero-card__name {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.hero-card__role {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.hero-card__description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* Карточка персонажа */
+.note-card {
+  overflow: hidden;
+  height: 100%;
+  padding-bottom: var(--space-md);
+  border-left: 4px solid var(--gold);
+}
+
+.note-card__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(26, 40, 64, 0.08);
+}
+
+.note-card__title,
+.note-card__role,
+.note-card__text {
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+.note-card__title {
+  margin: var(--space-md) 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.note-card__role {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.note-card__text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* Паспорт */
+.passport-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-md);
+  background: linear-gradient(160deg, #fffdf8, #f0e4cc);
+}
+
+.passport-card__label {
+  align-self: flex-start;
+  margin-bottom: var(--space-sm);
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #8b2500;
+  border: 2px solid #8b2500;
+  border-radius: 4px;
+}
+
+.passport-card__title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.passport-card__description {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.passport-card__book {
+  margin: auto 0 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* Викторина */
+.trial-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-md);
+}
+
+.trial-card__title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.trial-card__description {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.trial-card__book,
+.trial-card__stars {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.trial-card__link {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+}
+
+/* PDF комплекты */
+.kit-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-md);
+  background: linear-gradient(160deg, #fffdf8, #ebe0c8);
+}
+
+.kit-card__label {
+  align-self: flex-start;
+  margin-bottom: var(--space-sm);
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #8b2500;
+  border: 2px solid #8b2500;
+  border-radius: 4px;
+}
+
+.kit-card__title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.kit-card__description {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.kit-card__book {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.kit-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: auto;
+}
+
+.kit-card__link {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+}

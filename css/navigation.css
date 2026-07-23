@@ -1,0 +1,109 @@
+/* Navigation — боковое меню */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  background: linear-gradient(180deg, #8f5520 0%, var(--wood) 50%, var(--wood-dark) 100%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.sidebar__book {
+  width: 48px;
+  margin: var(--space-md) auto 0;
+  opacity: 0.9;
+}
+
+.nav__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px dashed rgba(212, 168, 67, 0.4);
+}
+
+.nav__compass {
+  width: 44px;
+  height: 44px;
+}
+
+.nav__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  color: var(--parchment-card);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.7rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--parchment-card);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent), #7a4818;
+  border: 2px solid var(--wood-dark);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-list__link:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent), #9a6028;
+  transform: translateX(4px);
+}
+
+.nav-list__link:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 2px;
+}
+
+.nav-list__link.is-active {
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  border-color: #8b6914;
+}
+
+.nav-list__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.nav-list__link.is-active .nav-list__icon {
+  filter: brightness(0.35);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(26, 40, 64, 0.45);
+}
+
+.nav-overlay:not([hidden]) {
+  display: block;
+}
+
+body.is-nav-open {
+  overflow: hidden;
+}

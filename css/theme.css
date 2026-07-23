@@ -1,0 +1,168 @@
+/* Animations — theme */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-normal: 0.35s;
+  --duration-slow: 0.6s;
+  --glow-gold: 0 0 12px rgba(212, 168, 67, 0.35);
+}
+
+.page {
+  animation: pageEnter var(--duration-slow) var(--ease-out) both;
+}
+
+.content {
+  animation: contentRise var(--duration-slow) var(--ease-out) 0.08s both;
+}
+
+.sidebar {
+  animation: sidebarSlide var(--duration-slow) var(--ease-out) 0.04s both;
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes contentRise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sidebarSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.header__star {
+  animation: starPulse 3s ease-in-out infinite;
+}
+
+.header__star--right {
+  animation-delay: 1.5s;
+}
+
+@keyframes starPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.nav__compass {
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.nav__head:hover .nav__compass {
+  transform: rotate(15deg) scale(1.05);
+}
+
+.nav-list__link {
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.nav-list__link.is-active {
+  box-shadow: var(--glow-gold);
+}
+
+.nav-list__icon {
+  transition: transform 0.2s var(--ease-out);
+}
+
+.nav-list__link:hover .nav-list__icon {
+  transform: scale(1.1);
+}
+
+.card,
+.book-card,
+.hero-card,
+.note-card,
+.passport-card,
+.trial-card,
+.kit-card,
+.book-picker__btn {
+  transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.card:hover,
+.book-card:hover,
+.hero-card:hover,
+.note-card:hover,
+.passport-card:hover,
+.trial-card:hover,
+.kit-card:hover,
+.book-picker__btn:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.book-catalog__item,
+.hero-list__item,
+.cards-list__item,
+.passports-list__item,
+.trials-list__item,
+.kit-list__item {
+  animation: cardAppear var(--duration-slow) var(--ease-out) both;
+}
+
+.book-catalog__item:nth-child(1),
+.hero-list__item:nth-child(1),
+.cards-list__item:nth-child(1) { animation-delay: 0.05s; }
+
+.book-catalog__item:nth-child(2),
+.hero-list__item:nth-child(2),
+.cards-list__item:nth-child(2) { animation-delay: 0.1s; }
+
+.book-catalog__item:nth-child(3),
+.hero-list__item:nth-child(3),
+.cards-list__item:nth-child(3) { animation-delay: 0.15s; }
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn,
+.expedition-route__link {
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.btn--primary:hover,
+.btn--secondary:hover {
+  transform: translateY(-1px);
+}
+
+.hero-card__photo,
+.book-card__cover-img {
+  transition: filter var(--duration-normal) var(--ease-out);
+}
+
+.hero-card:hover .hero-card__photo,
+.book-card:hover .book-card__cover-img {
+  filter: brightness(1.04) saturate(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
