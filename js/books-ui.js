@@ -5,11 +5,12 @@
 
   global.ReadingPortal.createBookCard = function (book, options) {
     options = options || {};
-    var linkHref = options.linkHref || 'book-travel.html?book=' + encodeURIComponent(book.id);
-    var linkText = options.linkText || 'Отправиться в экспедицию';
+    var isSoon = book.status === 'soon';
+    var linkHref = options.linkHref || (isSoon ? '#' : 'heroes.html?book=' + encodeURIComponent(book.id));
+    var linkText = options.linkText || (isSoon ? 'Скоро откроется' : 'Отправиться в экспедицию');
 
     var card = document.createElement('article');
-    card.className = 'book-card card';
+    card.className = 'book-card card' + (isSoon ? ' book-card--soon' : '');
 
     var cover = document.createElement('div');
     cover.className = 'book-card__cover';
@@ -18,11 +19,18 @@
       var coverImg = document.createElement('img');
       coverImg.className = 'book-card__cover-img';
       coverImg.src = book.cover;
-      coverImg.alt = 'Обложка: ' + book.title;
+      coverImg.alt = 'Обложка: ' + (book.subtitle || book.title);
       coverImg.loading = 'lazy';
       cover.appendChild(coverImg);
     } else {
       cover.style.backgroundColor = book.color || '#8b7355';
+    }
+
+    if (isSoon) {
+      var badge = document.createElement('span');
+      badge.className = 'book-card__badge';
+      badge.textContent = 'Скоро';
+      cover.appendChild(badge);
     }
 
     var body = document.createElement('div');
@@ -30,7 +38,7 @@
 
     var title = document.createElement('h3');
     title.className = 'book-card__title';
-    title.textContent = book.title;
+    title.textContent = book.subtitle || book.title;
 
     var author = document.createElement('p');
     author.className = 'book-card__author';
@@ -46,11 +54,13 @@
       body.appendChild(route);
     }
 
-    var link = document.createElement('a');
-    link.className = 'btn btn--primary book-card__link';
-    link.href = linkHref;
+    var link = document.createElement(isSoon ? 'span' : 'a');
+    link.className = 'btn btn--primary book-card__link' + (isSoon ? ' book-card__link--disabled' : '');
+    if (!isSoon) {
+      link.href = linkHref;
+      link.setAttribute('aria-label', linkText + ': ' + (book.subtitle || book.title));
+    }
     link.textContent = linkText;
-    link.setAttribute('aria-label', linkText + ': ' + book.title);
     body.appendChild(link);
 
     card.appendChild(cover);

@@ -32,10 +32,35 @@
 }
 
 .book-card__cover {
+  position: relative;
   aspect-ratio: 3 / 4;
   min-height: 180px;
   overflow: hidden;
   background: var(--parchment);
+}
+
+.book-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--navy-light);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(26, 40, 64, 0.25);
+}
+
+.book-card--soon {
+  opacity: 0.92;
+}
+
+.book-card__link--disabled {
+  cursor: default;
+  background: #8a94a6;
+  border-color: #6b7485;
+  pointer-events: none;
 }
 
 .book-card__cover-img {
