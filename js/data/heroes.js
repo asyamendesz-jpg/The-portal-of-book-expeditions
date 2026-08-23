@@ -9,16 +9,16 @@
       role: 'Главная героиня',
       description: 'Смелая и любознательная девочка, отправившаяся в космическое путешествие вместе с отцом.',
       bookId: 'alice-journey',
-      image: 'images/heroes/alice-selezneva.jpg',
+      image: 'images/heroes/alice-selezneva.png',
       color: '#e87461'
     },
     {
       id: 'professor-seleznev',
       name: 'Профессор Селезнёв',
       role: 'Учёный',
-      description: 'Отец Алисы. Ведёт экспедицию, изучает неизведанные миры и делится открытиями с командой.',
+      description: 'Учёный, космобиолог, отец Алисы.',
       bookId: 'alice-journey',
-      image: 'images/heroes/professor-seleznev.jpg',
+      image: 'images/heroes/professor-seleznev.png',
       color: '#6b8cae'
     },
     {
@@ -27,16 +27,16 @@
       role: 'Инопланетный друг',
       description: 'Великий археолог с планеты Чумароза. Добрый и верный спутник Алисы в приключениях.',
       bookId: 'alice-journey',
-      image: 'images/heroes/gromozeka.jpg',
+      image: 'images/heroes/gromozeka.png',
       color: '#5a7cbf'
     },
     {
       id: 'captain-poloskov',
       name: 'Капитан Полосков',
       role: 'Командир корабля',
-      description: 'Капитан космического корабля «Тайны». Опытный и уверенный командир экспедиции.',
+      description: 'Опытный капитан звездолёта, надёжный и справедливый.',
       bookId: 'alice-journey',
-      image: 'images/heroes/captain-poloskov.jpg',
+      image: 'images/heroes/captain-poloskov.png',
       color: '#3d5a80'
     },
     {
@@ -45,7 +45,7 @@
       role: 'Инженер',
       description: 'Механик корабля «Тайны». Надёжный инженер, который следит за работой двигателей и оборудования.',
       bookId: 'alice-journey',
-      image: 'images/heroes/mechanic-zelyony.jpg',
+      image: 'images/heroes/mechanic-zelyony.png',
       color: '#4a7c59'
     },
     {
@@ -54,7 +54,7 @@
       role: 'Житель далёких миров',
       description: 'Необычный обитатель космоса. Встреча с ним — одно из самых запоминающихся приключений Алисы.',
       bookId: 'alice-journey',
-      image: 'images/heroes/veselchak-u.jpg',
+      image: 'images/heroes/veselchak-u.png',
       color: '#c4a35a'
     }
   ];
