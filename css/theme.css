@@ -2,8 +2,8 @@
 
 :root {
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration-normal: 0.35s;
-  --duration-slow: 0.6s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
   --glow-gold: 0 0 12px rgba(212, 168, 67, 0.35);
 }
 
@@ -138,9 +138,24 @@
   }
 }
 
+.page--trial .page,
+.page--trial .content,
+.page--trial .sidebar {
+  animation: none;
+}
+
+.expedition-route__link {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.expedition-route__link:active {
+  transform: scale(0.99);
+}
+
 .btn,
 .expedition-route__link {
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s, border-color 0.15s;
 }
 
 .btn--primary:hover,

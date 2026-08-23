@@ -67,11 +67,11 @@
 
   global.ReadingPortal.expeditionRoute = [
     { icon: '📦', text: 'Получи комплект исследователя (скачать PDF)', href: 'workbooks.html' },
-    { icon: '⭐', text: 'Прослушай аудиоэпизод', href: 'quiz.html?trial=alice-cards' },
+    { icon: '⭐', text: 'Прослушай аудиоэпизод', href: 'trial-cards.html' },
     { icon: '⭐', text: 'Познакомься с героями', href: 'heroes.html' },
-    { icon: '⭐', text: 'Выполни задания', href: 'quiz.html?trial=alice-tasks' },
+    { icon: '⭐', text: 'Выполни задания', href: 'trial-tasks.html' },
     { icon: '⭐', text: 'Помоги восстановить портрет неизвестного героя', href: 'cards.html' },
     { icon: '⭐', text: 'Собери карточку персонажа', href: 'cards.html' },
-    { icon: '⭐', text: 'Получи достижение', href: 'quiz.html?trial=alice-cards' }
+    { icon: '⭐', text: 'Получи достижение', href: 'trial-cards.html' }
   ];
 })(window);

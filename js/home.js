@@ -64,12 +64,7 @@
   }
 
   function initHome() {
-    var expeditionEl = document.querySelector('[data-home-expedition]');
     var booksEl = document.querySelector('[data-home-books]');
-
-    if (expeditionEl) {
-      renderExpedition(expeditionEl);
-    }
 
     if (booksEl) {
       renderBooksSection(booksEl);

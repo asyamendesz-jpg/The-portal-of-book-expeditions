@@ -9,7 +9,7 @@
       description: 'Задания на карточках для испытания «Приключения Алисы».',
       bookId: 'alice-journey',
       file: 'pdf/kartochki-alisy.pdf',
-      trialPage: 'quiz.html?trial=alice-cards'
+      trialPage: 'trial-cards.html'
     },
     {
       id: 'kit-1',

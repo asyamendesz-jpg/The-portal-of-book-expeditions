@@ -4,7 +4,7 @@
   var portal = window.ReadingPortal;
 
   function getTrialPageUrl(quiz) {
-    return 'quiz.html?trial=' + encodeURIComponent(quiz.id);
+    return quiz.page || ('quiz.html?trial=' + encodeURIComponent(quiz.id));
   }
 
   function createQuizCard(quiz) {

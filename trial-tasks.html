@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Внеклассное чтение — Задания экспедиции</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body class="page--quiz page--trial">
+  <div class="page">
+    <header class="header">
+      <div class="header__inner">
+        <img class="header__star header__star--left" src="images/decor/star.svg" alt="" aria-hidden="true">
+        <div class="header__content">
+          <h1 class="header__title">Внеклассное чтение</h1>
+          <p class="header__tagline">Каждая книга — новое путешествие!</p>
+        </div>
+        <img class="header__star header__star--right" src="images/decor/star.svg" alt="" aria-hidden="true">
+      </div>
+    </header>
+    <div class="page-body">
+      <aside class="sidebar">
+        <nav class="nav" id="site-nav" aria-label="Навигатор читателя" data-nav></nav>
+        <img class="sidebar__book" src="images/decor/book.svg" alt="" aria-hidden="true">
+      </aside>
+      <main class="content">
+        <div class="content-area card">
+          <section class="trial-detail card" aria-labelledby="trial-title">
+            <a class="trial-detail__back" href="index.html">← На главную</a>
+            <p class="trial-detail__section">Приключения Алисы</p>
+            <h2 class="trial-detail__title" id="trial-title">Задания экспедиции</h2>
+            <p class="trial-detail__instruction">Прослушай аудиоэпизод. Затем скачай PDF с заданиями и выполни их от руки.</p>
+            <div class="trial-detail__actions">
+              <button type="button" class="btn btn--secondary" id="play-audio">▶ Прослушать эпизод</button>
+              <a class="btn btn--primary" href="pdf/zadaniya-alisy.pdf" download="zadaniya-alisy.pdf">Скачать PDF</a>
+            </div>
+            <audio id="trial-audio" controls preload="none" aria-label="Аудиоэпизод: Задания экспедиции">
+              <source src="audio/epizod-3.mp3" type="audio/mpeg">
+            </audio>
+            <div class="trial-detail__pdf-wrap">
+              <p class="trial-detail__pdf-label">Просмотр задания:</p>
+              <iframe class="trial-detail__pdf" data-src="pdf/zadaniya-alisy.pdf" title="Задания экспедиции — PDF" loading="lazy"></iframe>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <footer class="footer">
+      <img class="footer__book" src="images/decor/book.svg" alt="" aria-hidden="true">
+      <p class="footer__text">Каждая книга — новое путешествие. Каждый читатель — исследователь.</p>
+    </footer>
+  </div>
+  <script src="js/utils.js" defer></script>
+  <script src="js/data/pages.js" defer></script>
+  <script src="js/trial-page.js" defer></script>
+  <script src="js/script.js" defer></script>
+</body>
+</html>
