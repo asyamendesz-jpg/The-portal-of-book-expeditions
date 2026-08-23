@@ -172,3 +172,142 @@
   color: var(--navy);
   font-size: 1rem;
 }
+
+/* Викторины — вкладки и задание */
+.quiz-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.quiz-tabs__btn {
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--navy);
+  background: var(--parchment);
+  border: 2px solid rgba(26, 40, 64, 0.12);
+  border-radius: 999px;
+  cursor: default;
+}
+
+.quiz-tabs__btn.is-active {
+  color: var(--white);
+  background: var(--navy-light);
+  border-color: var(--navy);
+}
+
+.quiz-section {
+  margin-bottom: var(--space-lg);
+}
+
+.quiz-section__title {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--navy);
+  text-align: center;
+}
+
+.trial-detail {
+  padding: var(--space-lg);
+}
+
+.trial-detail__back {
+  display: inline-block;
+  margin-bottom: var(--space-md);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy-light);
+  text-decoration: none;
+}
+
+.trial-detail__back:hover {
+  text-decoration: underline;
+}
+
+.trial-detail__section {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.trial-detail__title {
+  margin: 0 0 var(--space-sm);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.trial-detail__instruction {
+  margin: 0 0 var(--space-sm);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.trial-detail__hint {
+  margin: 0 0 var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--parchment);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--gold);
+}
+
+.trial-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.trial-detail__actions .btn {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.trial-detail__audio {
+  width: 100%;
+  margin-bottom: var(--space-lg);
+}
+
+.trial-detail__pdf-label {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.trial-detail__pdf-wrap {
+  margin-top: var(--space-sm);
+}
+
+.trial-detail__pdf {
+  display: block;
+  width: 100%;
+  min-height: 480px;
+  border: 1px solid rgba(26, 40, 64, 0.12);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+}
+
+.trial-detail__pdf-fallback {
+  margin: var(--space-sm) 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.trial-detail__pdf-fallback a {
+  color: var(--navy-light);
+  font-weight: 700;
+}

@@ -4,6 +4,14 @@
   global.ReadingPortal = global.ReadingPortal || {};
   global.ReadingPortal.workbooks = [
     {
+      id: 'alice-cards-pdf',
+      title: 'Карточки Алисы',
+      description: 'Задания на карточках для испытания «Приключения Алисы».',
+      bookId: 'alice-journey',
+      file: 'pdf/kartochki-alisy.pdf',
+      trialPage: 'quiz.html?trial=alice-cards'
+    },
+    {
       id: 'kit-1',
       title: 'Экспедиционный комплект 1',
       description: 'Материалы для книжного путешествия по «Путешествию Алисы».',

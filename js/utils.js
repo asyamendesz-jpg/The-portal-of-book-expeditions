@@ -48,4 +48,24 @@
     var params = new URLSearchParams(window.location.search);
     return params.get(name);
   };
+
+  portal.encodeAssetPath = function (path) {
+    if (!path) return '';
+    return path.split('/').map(function (part) {
+      return encodeURIComponent(part);
+    }).join('/');
+  };
+
+  portal.findQuiz = function (quizId) {
+    var quizzes = portal.quizzes || [];
+    if (!quizzes.length) return null;
+
+    if (quizId) {
+      for (var i = 0; i < quizzes.length; i++) {
+        if (quizzes[i].id === quizId) return quizzes[i];
+      }
+    }
+
+    return quizzes[0];
+  };
 })(window);
