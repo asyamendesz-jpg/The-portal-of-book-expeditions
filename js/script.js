@@ -208,6 +208,12 @@
         img.src = book.cover;
         img.alt = '';
         img.setAttribute('aria-hidden', 'true');
+        img.decoding = 'async';
+        if (book.id === selectedBookId) {
+          img.fetchPriority = 'high';
+        } else {
+          img.loading = 'lazy';
+        }
         btn.appendChild(img);
       }
 
@@ -263,7 +269,14 @@
     var books = portal.books || [];
     if (!books.length) return;
 
-    selectedBookId = portal.getQueryParam('book') || books[0].id;
+    var openBook = null;
+    for (var i = 0; i < books.length; i++) {
+      if (books[i].status === 'open') {
+        openBook = books[i];
+        break;
+      }
+    }
+    selectedBookId = portal.getQueryParam('book') || (openBook || books[0]).id;
 
     renderBookPicker(pickerEl, function (bookId) {
       renderHeroesList(listEl, bookId);
@@ -289,7 +302,8 @@
     img.className = 'page-banner__img';
     img.src = meta.image;
     img.alt = meta.alt;
-    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.fetchPriority = 'high';
     figure.appendChild(img);
     bannerEl.appendChild(figure);
 
@@ -314,4 +328,9 @@
     initPageBanner();
     initHeroesPage();
   });
+
+  // Навигация сразу после парсинга DOM (defer), не ждём картинки
+  if (document.readyState !== 'loading') {
+    initMenu();
+  }
 })();
