@@ -11,6 +11,7 @@
     tasksCompleted: false,
     characterQuizCompleted: false,
     characterCardCompleted: false,
+    fieldTaskCompleted: false,
     expeditionCompleted: false
   };
 
@@ -91,6 +92,7 @@
       progress.tasksCompleted ||
       progress.characterQuizCompleted ||
       progress.characterCardCompleted ||
+      progress.fieldTaskCompleted ||
       progress.expeditionCompleted
     );
   };
@@ -211,10 +213,6 @@
 
     if (step && step.flag) {
       portal.markJourneyFlag(step.flag);
-    }
-
-    if (stepId === 'card') {
-      portal.markJourneyFlag('expeditionCompleted');
     }
 
     if (!mountEl) return;
