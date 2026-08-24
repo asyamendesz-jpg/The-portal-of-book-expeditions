@@ -311,3 +311,219 @@
   color: var(--navy-light);
   font-weight: 700;
 }
+
+.trial-detail__layer,
+.trial-card__layer {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--navy-light);
+}
+
+.trial-done {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  background: var(--parchment);
+  border-left: 4px solid var(--gold);
+}
+
+.trial-done__title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.trial-done__text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.trial-proof {
+  margin-top: var(--space-md);
+  border: 1px solid rgba(26, 40, 64, 0.12);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+}
+
+.trial-proof__summary {
+  cursor: pointer;
+  list-style: none;
+  padding: var(--space-md);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.trial-proof__summary::-webkit-details-marker {
+  display: none;
+}
+
+.trial-proof__summary::after {
+  content: ' ↓';
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.trial-proof[open] .trial-proof__summary::after {
+  content: ' ↑';
+}
+
+.trial-proof__body {
+  padding: 0 var(--space-md) var(--space-md);
+  border-top: 1px solid rgba(26, 40, 64, 0.08);
+}
+
+.trial-proof__note {
+  margin: var(--space-sm) 0 var(--space-md);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.trial-proof__heading {
+  margin: var(--space-md) 0 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.trial-proof__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.trial-proof__key {
+  margin: var(--space-md) 0 0;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--navy);
+  background: var(--parchment);
+  border-radius: var(--radius-sm);
+}
+
+.trial-proof__channels {
+  margin-top: var(--space-md);
+}
+
+.trial-proof__channels-title {
+  margin: 0 0 var(--space-sm);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.trial-proof__channel-list {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.trial-proof__channel-list dt {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.trial-proof__channel-list dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.trial-proof__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.trial-proof__actions .btn {
+  flex: 1 1 220px;
+}
+
+.adult-proof {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px dashed rgba(26, 40, 64, 0.18);
+}
+
+.adult-proof__eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.adult-proof__title {
+  margin: 0 0 var(--space-md);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.adult-proof__stack {
+  display: grid;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.adult-proof__stack h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.adult-proof__stack p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.adult-proof__try {
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  background: var(--parchment);
+  border-left: 4px solid var(--gold);
+}
+
+.adult-proof__try h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.adult-proof__try p {
+  margin: 0 0 var(--space-md);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.adult-proof__case {
+  margin: var(--space-md) 0 0;
+  font-size: 0.9rem;
+}
+
+.adult-proof__case a {
+  color: var(--navy-light);
+  font-weight: 700;
+}
