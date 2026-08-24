@@ -2,9 +2,23 @@
   'use strict';
 
   var portal = window.ReadingPortal;
+  var state = {
+    filter: 'all',
+    query: ''
+  };
 
   function getTrialPageUrl(quiz) {
     return quiz.page || ('quiz.html?trial=' + encodeURIComponent(quiz.id));
+  }
+
+  function starsHtml(count) {
+    var n = Math.max(0, Math.min(5, Number(count) || 0));
+    var out = '';
+    var i;
+    for (i = 0; i < 5; i++) {
+      out += i < n ? '★' : '☆';
+    }
+    return out;
   }
 
   function createQuizCard(quiz) {
@@ -15,11 +29,17 @@
     title.className = 'trial-card__title';
     title.textContent = quiz.title;
 
+    var stars = document.createElement('p');
+    stars.className = 'trial-card__stars';
+    stars.setAttribute('aria-label', 'Сложность: ' + (quiz.stars || 0) + ' из 5');
+    stars.textContent = starsHtml(quiz.stars);
+
     var description = document.createElement('p');
     description.className = 'trial-card__description';
     description.textContent = quiz.description;
 
     card.appendChild(title);
+    card.appendChild(stars);
     card.appendChild(description);
 
     var link = document.createElement('a');
@@ -32,24 +52,75 @@
     return card;
   }
 
-  function renderTabs(container) {
+  function matchesFilters(quiz) {
+    if (state.filter !== 'all' && quiz.bookId !== state.filter) return false;
+    if (!state.query) return true;
+    var q = state.query.toLowerCase();
+    return String(quiz.title || '').toLowerCase().indexOf(q) !== -1 ||
+      String(quiz.description || '').toLowerCase().indexOf(q) !== -1;
+  }
+
+  function renderHowItWorks(container) {
+    var block = document.createElement('section');
+    block.className = 'quiz-how';
+    block.innerHTML =
+      '<h3 class="quiz-how__title">Как это работает?</h3>' +
+      '<ol class="quiz-how__list">' +
+      '<li class="quiz-how__item"><strong>Слушай</strong> — включи эпизод из книги.</li>' +
+      '<li class="quiz-how__item"><strong>Выполняй</strong> — скачай PDF и сделай задания.</li>' +
+      '<li class="quiz-how__item"><strong>Проверь себя</strong> — возвращайся к героям и карточкам.</li>' +
+      '</ol>';
+    container.appendChild(block);
+  }
+
+  function renderControls(container, onChange) {
+    var controls = document.createElement('div');
+    controls.className = 'quiz-controls';
+
     var tabs = document.createElement('div');
     tabs.className = 'quiz-tabs';
     tabs.setAttribute('role', 'tablist');
 
-    var tab = document.createElement('button');
-    tab.type = 'button';
-    tab.className = 'quiz-tabs__btn is-active';
-    tab.textContent = 'Испытания';
-    tab.setAttribute('role', 'tab');
-    tab.setAttribute('aria-selected', 'true');
+    var filters = [
+      { id: 'all', label: 'Все' },
+      { id: 'alice-journey', label: 'Приключения Алисы' }
+    ];
 
-    tabs.appendChild(tab);
-    container.appendChild(tabs);
+    filters.forEach(function (filter) {
+      var tab = document.createElement('button');
+      tab.type = 'button';
+      tab.className = 'quiz-tabs__btn' + (state.filter === filter.id ? ' is-active' : '');
+      tab.textContent = filter.label;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-selected', state.filter === filter.id ? 'true' : 'false');
+      tab.addEventListener('click', function () {
+        state.filter = filter.id;
+        onChange();
+      });
+      tabs.appendChild(tab);
+    });
+
+    var search = document.createElement('label');
+    search.className = 'quiz-search';
+    search.innerHTML = '<span class="quiz-search__label">Поиск</span>';
+    var input = document.createElement('input');
+    input.type = 'search';
+    input.className = 'quiz-search__input';
+    input.placeholder = 'Название испытания…';
+    input.value = state.query;
+    input.addEventListener('input', function () {
+      state.query = input.value.trim();
+      onChange();
+    });
+    search.appendChild(input);
+
+    controls.appendChild(tabs);
+    controls.appendChild(search);
+    container.appendChild(controls);
   }
 
   function renderQuizList(container) {
-    var quizzes = portal.quizzes || [];
+    var quizzes = (portal.quizzes || []).filter(matchesFilters);
     var sections = {};
 
     quizzes.forEach(function (quiz) {
@@ -58,7 +129,13 @@
       sections[name].push(quiz);
     });
 
-    Object.keys(sections).forEach(function (sectionName) {
+    var keys = Object.keys(sections);
+    if (!keys.length) {
+      container.appendChild(portal.createEmpty('trials-empty', 'По этому запросу испытаний не найдено.'));
+      return;
+    }
+
+    keys.forEach(function (sectionName) {
       var block = document.createElement('section');
       block.className = 'quiz-section';
 
@@ -83,15 +160,20 @@
   }
 
   function renderQuizzes(container) {
-    container.innerHTML = '';
-    renderTabs(container);
+    function paint() {
+      container.innerHTML = '';
+      renderHowItWorks(container);
+      renderControls(container, paint);
 
-    if (!portal.quizzes || !portal.quizzes.length) {
-      container.appendChild(portal.createEmpty('trials-empty', 'Испытания скоро появятся.'));
-      return;
+      if (!portal.quizzes || !portal.quizzes.length) {
+        container.appendChild(portal.createEmpty('trials-empty', 'Испытания скоро появятся.'));
+        return;
+      }
+
+      renderQuizList(container);
     }
 
-    renderQuizList(container);
+    paint();
   }
 
   function renderTrialDetail(container, quiz) {
@@ -104,8 +186,8 @@
 
     var back = document.createElement('a');
     back.className = 'trial-detail__back';
-    back.href = 'index.html';
-    back.textContent = '← На главную';
+    back.href = 'quiz.html';
+    back.textContent = '← К списку испытаний';
     section.appendChild(back);
 
     var sectionLabel = document.createElement('p');

@@ -1,4 +1,4 @@
-(function (global) {
+﻿(function (global) {
   'use strict';
 
   global.ReadingPortal = global.ReadingPortal || {};
@@ -11,7 +11,7 @@
       fact: 'Алиса живёт в будущем и путешествует по разным планетам, где встречает удивительных существ.',
       traits: 'Любознательная, смелая, добрая, сообразительная, отзывчивая.',
       bookId: 'alice-journey',
-      image: 'images/heroes/alice-selezneva.jpg',
+      image: 'images/heroes/alice-selezneva.png',
       color: '#e87461'
     },
     {
@@ -22,7 +22,7 @@
       fact: 'Работа профессора связана с изучением необычных животных и существ с разных планет.',
       traits: 'Умный, добрый, заботливый, спокойный, ответственный.',
       bookId: 'alice-journey',
-      image: 'images/heroes/professor-seleznev.jpg',
+      image: 'images/heroes/professor-seleznev.png',
       color: '#6b8cae'
     },
     {
@@ -33,7 +33,7 @@
       fact: 'Пока участники экспедиции занимаются открытиями, Полосков отвечает за то, чтобы космический корабль благополучно добрался до цели.',
       traits: 'Он не любит лишнего шума, зато любит порядок, точность и чтобы всё было как следует. Пока кто-то волнуется, капитан думает. Пока кто-то спорит, капитан решает.',
       bookId: 'alice-journey',
-      image: 'images/heroes/captain-poloskov.jpg',
+      image: 'images/heroes/captain-poloskov.png',
       color: '#3d5a80'
     },
     {
@@ -44,7 +44,7 @@
       fact: 'Зелёный отвечает за исправность корабля и постоянно следит за техникой во время путешествия.',
       traits: 'Пока другие рассуждают, он уже чинит, проверяет, подкручивает и делает так, чтобы всё работало как часы.',
       bookId: 'alice-journey',
-      image: 'images/heroes/mechanic-zelyony.jpg',
+      image: 'images/heroes/mechanic-zelyony.png',
       color: '#4a7c59'
     },
     {
@@ -55,7 +55,7 @@
       fact: 'Громозека — археолог и исследователь.',
       traits: 'Добрый, умный и преданный друг. Он вызывает и удивление, и симпатию одновременно.',
       bookId: 'alice-journey',
-      image: 'images/heroes/gromozeka.jpg',
+      image: 'images/heroes/gromozeka.png',
       color: '#5a7cbf'
     },
     {
@@ -66,7 +66,7 @@
       fact: 'Его весёлое имя обманчиво: Весельчак У относится к отрицательным персонажам истории.',
       traits: 'На первый взгляд весёлый и простодушный, но на самом деле хитрый, опасный и коварный. Вместе с другими пиратами охотится за чужими секретами и ценностями.',
       bookId: 'alice-journey',
-      image: 'images/heroes/veselchak-u.jpg',
+      image: 'images/heroes/veselchak-u.png',
       color: '#c4a35a'
     }
   ];

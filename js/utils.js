@@ -44,6 +44,9 @@
     return el;
   };
 
+  /* алиас из плана сборки */
+  portal.createEmptyMessage = portal.createEmpty;
+
   portal.getQueryParam = function (name) {
     var params = new URLSearchParams(window.location.search);
     return params.get(name);

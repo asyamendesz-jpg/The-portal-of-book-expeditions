@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админка — Внеклассное чтение</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="page--admin">
+  <div class="admin" id="admin-app">
+    <section class="admin-login card" data-admin-login>
+      <h1 class="admin-login__title">Внеклассное чтение</h1>
+      <p class="admin-login__sub">Вход для автора проекта</p>
+      <div class="admin-login__setup" data-admin-setup hidden>
+        <p><strong>Аналитика ещё не подключена.</strong></p>
+        <ol>
+          <li>Создайте проект на <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a></li>
+          <li>В SQL Editor выполните файл <code>admin/schema.sql</code></li>
+          <li>Authentication → Users → Add user (ваш email и пароль)</li>
+          <li>Settings → API → скопируйте URL и anon key в <code>js/data/analytics-config.js</code></li>
+          <li>Поставьте <code>enabled: true</code> и залейте изменения на GitHub</li>
+        </ol>
+      </div>
+      <form class="admin-login__form" data-admin-form>
+        <label class="admin-field">
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="username" required>
+        </label>
+        <label class="admin-field">
+          <span>Пароль</span>
+          <input type="password" name="password" autocomplete="current-password" required>
+        </label>
+        <p class="admin-error" data-admin-error hidden></p>
+        <button type="submit" class="admin-btn">Войти</button>
+      </form>
+    </section>
+
+    <section class="admin-dash" data-admin-dash hidden>
+      <header class="admin-dash__head">
+        <div>
+          <h1>Внеклассное чтение</h1>
+          <p>Что происходит с продуктом</p>
+        </div>
+        <button type="button" class="admin-btn admin-btn--ghost" data-admin-logout>Выйти</button>
+      </header>
+
+      <p class="admin-status" data-admin-status>Загрузка…</p>
+
+      <div class="admin-metrics" data-admin-metrics></div>
+
+      <section class="card admin-block">
+        <h2>Путь экспедиции</h2>
+        <div data-admin-funnel></div>
+      </section>
+
+      <section class="card admin-block">
+        <h2>Полевые задания</h2>
+        <div data-admin-field></div>
+      </section>
+
+      <section class="card admin-block">
+        <h2>Нужны ли фотографии в Дневнике?</h2>
+        <div data-admin-survey></div>
+      </section>
+
+      <details class="card admin-block">
+        <summary>Технические данные — последние события</summary>
+        <div data-admin-raw></div>
+      </details>
+    </section>
+  </div>
+
+  <script src="../js/data/analytics-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

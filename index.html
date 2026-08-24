@@ -35,25 +35,40 @@
       </aside>
       <main class="content">
         <figure class="page-hero">
-          <img class="page-hero__img" src="images/mockups/glavnaya.jpg" alt="Портал книжных экспедиций — карта книжных миров" loading="lazy" decoding="async">
+          <img class="page-hero__img" src="images/mockups/home.png" alt="Портал книжных экспедиций — карта книжных миров" loading="lazy" decoding="async">
         </figure>
-        <section class="expedition-card card">
-          <h2 class="expedition-card__title">🚀 Экспедиция готова к старту</h2>
+        <section class="expedition-card card expedition-steps" aria-labelledby="expedition-title">
+          <h2 class="expedition-card__title" id="expedition-title">Экспедиция готова к старту</h2>
           <h3 class="expedition-card__subtitle">Маршрут экспедиции:</h3>
           <ul class="expedition-route">
-            <li class="expedition-route__item"><a class="expedition-route__link" href="book-travel.html"><span class="expedition-route__icon">🗺️</span> Книжные путешествия</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="heroes.html?book=alice-journey"><span class="expedition-route__icon">⭐</span> Выбери книгу — Приключения Алисы</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="trial-cards.html"><span class="expedition-route__icon">🎧</span> Послушай эпизод</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="heroes.html?book=alice-journey&amp;step=meet"><span class="expedition-route__icon">⭐</span> Познакомься с героями</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="trial-tasks.html"><span class="expedition-route__icon">✏️</span> Выполни задания</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="cards.html?mode=guess"><span class="expedition-route__icon">🔍</span> Узнай героя по описанию</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="cards.html?mode=build"><span class="expedition-route__icon">🃏</span> Собери карточку персонажа</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="field-task.html"><span class="expedition-route__icon">✏️</span> Полевое задание — нарисуй планету</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="diary.html"><span class="expedition-route__icon">📔</span> Дневник экспедиции</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="achievements.html"><span class="expedition-route__icon">🏆</span> Посмотри достижения</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="book-travel.html"><span class="expedition-route__icon" aria-hidden="true">1.</span> Книжные путешествия</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="heroes.html?book=alice-journey"><span class="expedition-route__icon" aria-hidden="true">2.</span> Выбери книгу — Приключения Алисы</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="trial-cards.html"><span class="expedition-route__icon" aria-hidden="true">3.</span> Послушай эпизод</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="heroes.html?book=alice-journey&amp;step=meet"><span class="expedition-route__icon" aria-hidden="true">4.</span> Познакомься с героями</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="trial-tasks.html"><span class="expedition-route__icon" aria-hidden="true">5.</span> Выполни задания</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="cards.html?mode=guess"><span class="expedition-route__icon" aria-hidden="true">6.</span> Узнай героя и собери карточку</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="achievements.html"><span class="expedition-route__icon" aria-hidden="true">7.</span> Посмотри достижения</a></li>
           </ul>
-          <a class="btn btn--cta" data-journey-home-cta href="book-travel.html">🚀 НАЧАТЬ ЭКСПЕДИЦИЮ</a>
+          <a class="btn btn--cta" data-journey-home-cta href="book-travel.html">Начать экспедицию</a>
         </section>
+        <nav class="action-bar" aria-label="Быстрые действия экспедиции">
+          <a class="action-bar__item" href="trial-cards.html">
+            <span class="action-bar__label">Слушай</span>
+            <span class="action-bar__hint">Эпизод книги</span>
+          </a>
+          <a class="action-bar__item" href="trial-tasks.html">
+            <span class="action-bar__label">Выполняй</span>
+            <span class="action-bar__hint">Задания</span>
+          </a>
+          <a class="action-bar__item" href="cards.html?mode=build">
+            <span class="action-bar__label">Твори</span>
+            <span class="action-bar__hint">Карточки</span>
+          </a>
+          <a class="action-bar__item" href="achievements.html">
+            <span class="action-bar__label">Достижения</span>
+            <span class="action-bar__hint">Итоги пути</span>
+          </a>
+        </nav>
         <div data-home-books></div>
       </main>
     </div>

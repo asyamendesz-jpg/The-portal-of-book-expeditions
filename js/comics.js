@@ -8,9 +8,33 @@
     container.innerHTML = '';
 
     if (!comics || !comics.length) {
-      container.appendChild(
-        portal.createEmpty('section-soon', 'Альбом скоро пополнится новыми работами. Твори и делись своими историями!')
-      );
+      var gallery = document.createElement('section');
+      gallery.className = 'comics-soon';
+
+      var title = document.createElement('h2');
+      title.className = 'section-title';
+      title.textContent = 'Галерея читателей';
+
+      var text = document.createElement('p');
+      text.className = 'page-intro';
+      text.textContent =
+        'Здесь появятся комиксы юных исследователей. Пока альбом пуст — твори свои истории по мотивам экспедиции.';
+
+      var placeholders = document.createElement('ul');
+      placeholders.className = 'comics-soon__grid';
+      ['Кадр 1', 'Кадр 2', 'Кадр 3'].forEach(function (label) {
+        var item = document.createElement('li');
+        item.className = 'comics-soon__slot';
+        item.innerHTML =
+          '<div class="comics-soon__frame" aria-hidden="true"></div>' +
+          '<p class="comics-soon__label">' + label + ' — скоро</p>';
+        placeholders.appendChild(item);
+      });
+
+      gallery.appendChild(title);
+      gallery.appendChild(text);
+      gallery.appendChild(placeholders);
+      container.appendChild(gallery);
       return;
     }
 
@@ -33,10 +57,10 @@
         card.appendChild(img);
       }
 
-      var title = document.createElement('h3');
-      title.className = 'comic-card__title';
-      title.textContent = comic.title;
-      card.appendChild(title);
+      var comicTitle = document.createElement('h3');
+      comicTitle.className = 'comic-card__title';
+      comicTitle.textContent = comic.title;
+      card.appendChild(comicTitle);
 
       item.appendChild(card);
       list.appendChild(item);

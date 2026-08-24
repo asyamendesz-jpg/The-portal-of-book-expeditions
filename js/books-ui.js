@@ -62,6 +62,16 @@
       if (book.id === 'alice-journey' && global.ReadingPortal.markJourneyFlag) {
         link.addEventListener('click', function () {
           global.ReadingPortal.markJourneyFlag('bookSelected');
+          if (global.ReadingPortal.track) {
+            global.ReadingPortal.track('book_selected', {
+              bookId: book.id,
+              expeditionId: 'alice-journey'
+            });
+            global.ReadingPortal.track('alice_opened', {
+              bookId: book.id,
+              expeditionId: 'alice-journey'
+            });
+          }
         });
       }
     }

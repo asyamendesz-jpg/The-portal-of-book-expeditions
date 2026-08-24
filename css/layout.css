@@ -149,11 +149,11 @@ img {
 
 .page-intro {
   margin: 0 auto var(--space-md);
-  max-width: 55ch;
+  max-width: 65ch;
   text-align: center;
   color: var(--ink-soft);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* FOOTER */

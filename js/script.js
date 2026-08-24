@@ -146,6 +146,7 @@
   function createHeroCard(hero) {
     var card = document.createElement('article');
     card.className = 'hero-card card';
+    if (hero.id) card.id = hero.id;
 
     var portrait = document.createElement('div');
     portrait.className = 'hero-card__portrait';
@@ -295,9 +296,17 @@
     host.hidden = false;
     portal.markJourneyFlag('bookSelected');
 
+    if (portal.track) {
+      portal.track('alice_opened', { bookId: 'alice-journey', expeditionId: 'alice-journey' });
+    }
+
     if (step === 'meet') {
       if (portal.mountJourneyChrome) {
         portal.mountJourneyChrome({ currentStepId: 'heroes' });
+      }
+
+      if (portal.track) {
+        portal.track('characters_opened', { expeditionId: 'alice-journey' });
       }
 
       var meetPanel = document.createElement('div');
@@ -311,6 +320,9 @@
       meetBtn.className = 'btn btn--cta';
       meetBtn.textContent = 'Я познакомился(ась) с героями →';
       meetBtn.addEventListener('click', function () {
+        if (portal.track) {
+          portal.track('characters_completed', { expeditionId: 'alice-journey' });
+        }
         var nextHost = document.querySelector('[data-journey-next]');
         if (!nextHost && content) {
           nextHost = document.createElement('div');
@@ -363,6 +375,16 @@
 
     renderHeroesList(listEl, selectedBookId);
     renderHeroesJourneyPanel(selectedBookId, listEl);
+
+    var hash = window.location.hash.replace(/^#/, '');
+    if (hash) {
+      var target = document.getElementById(hash);
+      if (target && typeof target.scrollIntoView === 'function') {
+        setTimeout(function () {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+    }
   }
 
   function initPageBanner() {

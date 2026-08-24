@@ -1,4 +1,4 @@
-(function (global) {
+﻿(function (global) {
   'use strict';
 
   global.ReadingPortal = global.ReadingPortal || {};
@@ -10,7 +10,7 @@
       author: 'Кир Булычёв',
       route: 'Экспедиция №1',
       color: '#4a7cb8',
-      cover: 'images/covers/alice-journey.jpg',
+      cover: 'images/covers/alice-journey.png',
       status: 'open'
     },
     {
@@ -20,7 +20,7 @@
       author: 'Кир Булычёв',
       route: 'Экспедиция №2',
       color: '#4a7c59',
-      cover: 'images/covers/alice-asteroid.jpg',
+      cover: 'images/covers/alice-asteroid.png',
       status: 'soon'
     },
     {
@@ -30,7 +30,7 @@
       author: 'Кир Булычёв',
       route: 'Экспедиция №3',
       color: '#3d5a80',
-      cover: 'images/covers/alice-city.jpg',
+      cover: 'images/covers/alice-city.png',
       status: 'soon'
     },
     {
@@ -40,7 +40,7 @@
       author: 'Кир Булычёв',
       route: 'Экспедиция №4',
       color: '#5b4bb4',
-      cover: 'images/covers/alice-time.jpg',
+      cover: 'images/covers/alice-time.png',
       status: 'soon'
     }
   ];

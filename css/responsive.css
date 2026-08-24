@@ -64,6 +64,14 @@
     padding: var(--space-md);
   }
 
+  .action-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .travel-map__list {
+    grid-template-columns: 1fr;
+  }
+
   .trial-detail {
     padding: var(--space-md);
   }
