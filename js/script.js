@@ -295,9 +295,17 @@
     host.hidden = false;
     portal.markJourneyFlag('bookSelected');
 
+    if (portal.track) {
+      portal.track('alice_opened', { bookId: 'alice-journey', expeditionId: 'alice-journey' });
+    }
+
     if (step === 'meet') {
       if (portal.mountJourneyChrome) {
         portal.mountJourneyChrome({ currentStepId: 'heroes' });
+      }
+
+      if (portal.track) {
+        portal.track('characters_opened', { expeditionId: 'alice-journey' });
       }
 
       var meetPanel = document.createElement('div');
@@ -311,6 +319,9 @@
       meetBtn.className = 'btn btn--cta';
       meetBtn.textContent = 'Я познакомился(ась) с героями →';
       meetBtn.addEventListener('click', function () {
+        if (portal.track) {
+          portal.track('characters_completed', { expeditionId: 'alice-journey' });
+        }
         var nextHost = document.querySelector('[data-journey-next]');
         if (!nextHost && content) {
           nextHost = document.createElement('div');

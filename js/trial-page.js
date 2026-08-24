@@ -21,12 +21,20 @@
 
     if (playBtn && audio) {
       playBtn.addEventListener('click', function () {
+        if (stepId === 'episode' && portal.track) {
+          portal.track('episode_started', { expeditionId: 'alice-journey' });
+        }
         audio.play();
       });
     }
 
     function showDone() {
       if (!stepId || !portal.completeStepAndShowNext) return;
+      if (portal.track) {
+        if (stepId === 'episode') {
+          portal.track('episode_completed', { expeditionId: 'alice-journey' });
+        }
+      }
       portal.completeStepAndShowNext(stepId, nextHost);
     }
 

@@ -93,8 +93,10 @@
           portal.saveSurveyAnswer(answer.value);
         }
         if (portal.track) {
-          portal.track('photo_diary_interest', { value: answer.value, expeditionId: 'alice-journey' });
-          portal.track(answer.event, { value: answer.value, expeditionId: 'alice-journey' });
+          portal.track(answer.event, {
+            expeditionId: 'alice-journey',
+            surveyId: 'photo-diary-v1'
+          });
         }
         renderSurveyThanks(host, answer.thanks);
       });
@@ -120,7 +122,10 @@
     host.appendChild(skip);
 
     if (portal.track) {
-      portal.track('photo_diary_question_viewed', { expeditionId: 'alice-journey' });
+      portal.track('photo_diary_question_viewed', {
+        expeditionId: 'alice-journey',
+        surveyId: 'photo-diary-v1'
+      });
     }
   }
 
@@ -217,6 +222,11 @@
 
   portal.onReady(function () {
     var container = document.querySelector('[data-achievements]');
-    if (container) renderAchievements(container);
+    if (container) {
+      if (portal.track) {
+        portal.track('achievements_opened', { expeditionId: 'alice-journey' });
+      }
+      renderAchievements(container);
+    }
   });
 })();

@@ -124,6 +124,10 @@
       done.textContent = 'Ты узнал(а) ' + correctCount + ' из ' + queue.length + '!';
       wrap.appendChild(done);
 
+      if (portal.track) {
+        portal.track('character_quiz_completed', { expeditionId: 'alice-journey' });
+      }
+
       if (portal.completeStepAndShowNext) {
         portal.completeStepAndShowNext('guess', nextHost);
       }
@@ -488,6 +492,9 @@
       if (portal.markJourneyFlag) {
         portal.markJourneyFlag('characterCardCompleted');
       }
+      if (portal.track) {
+        portal.track('character_card_completed', { expeditionId: 'alice-journey' });
+      }
 
       var cta = document.createElement('a');
       cta.className = 'btn btn--cta';
@@ -529,6 +536,9 @@
       }
       var bannerTitle = document.querySelector('.page-title');
       if (bannerTitle) bannerTitle.textContent = 'Узнай героя по описанию';
+      if (portal.track) {
+        portal.track('character_quiz_started', { expeditionId: 'alice-journey' });
+      }
       renderGuessMode(container, chrome.next);
       return;
     }
@@ -541,6 +551,9 @@
       }
       var buildTitle = document.querySelector('.page-title');
       if (buildTitle) buildTitle.textContent = 'Собери карточку персонажа';
+      if (portal.track) {
+        portal.track('character_card_started', { expeditionId: 'alice-journey' });
+      }
       renderBuildMode(container, chrome.next);
       return;
     }
