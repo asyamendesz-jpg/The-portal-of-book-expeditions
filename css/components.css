@@ -933,3 +933,73 @@
 .diary__delete {
   color: #8b3a2f;
 }
+
+/* Опрос для взрослых на экране достижений */
+.adult-survey {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  text-align: left;
+  border-top: 2px solid rgba(26, 40, 64, 0.08);
+}
+
+.adult-survey__badge {
+  margin: 0 0 var(--space-xs);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.adult-survey__title {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.adult-survey__text,
+.adult-survey__question {
+  margin: 0 0 var(--space-sm);
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.adult-survey__question {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.adult-survey__choices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.adult-survey__choice {
+  width: 100%;
+  min-height: 52px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.35;
+  padding: 0.85rem 1rem;
+}
+
+.adult-survey__skip {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.adult-survey__skip:hover {
+  color: var(--navy);
+}

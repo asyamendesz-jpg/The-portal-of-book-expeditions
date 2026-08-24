@@ -73,6 +73,13 @@
     if (portal.initHomeJourneyCta) {
       portal.initHomeJourneyCta();
     }
+
+    var cta = document.querySelector('[data-journey-home-cta], .expedition-card .btn--cta');
+    if (cta && portal.track) {
+      cta.addEventListener('click', function () {
+        portal.track('expedition_started', { expeditionId: 'alice-journey' });
+      });
+    }
   }
 
   portal.onReady(initHome);

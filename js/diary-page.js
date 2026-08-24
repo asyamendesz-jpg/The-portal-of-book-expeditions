@@ -35,7 +35,7 @@
 
     var lead = document.createElement('p');
     lead.className = 'diary__lead';
-    lead.textContent = 'Здесь хранятся твои полевые задания — то, что ты сделал(а) своими руками.';
+    lead.textContent = 'Здесь отмечены твои полевые задания — то, что ты сделал(а) своими руками.';
 
     container.appendChild(title);
     container.appendChild(lead);
@@ -86,34 +86,20 @@
         name.className = 'diary__item-title';
         name.textContent = (task && task.title) || entry.title || 'Полевое задание';
 
-        var prompt = document.createElement('p');
-        prompt.className = 'diary__prompt';
-        prompt.textContent = (task && task.prompt) || '';
-
-        var status = document.createElement('p');
-        status.className = 'diary__status' + (entry.photoUploaded ? ' is-photo' : ' is-done');
-        if (entry.photoUploaded) {
-          status.textContent = '✓ Задание выполнено · 📷 Работа сохранена в Дневнике';
+        var story = document.createElement('p');
+        story.className = 'diary__prompt';
+        if (task && task.type === 'draw') {
+          story.textContent = 'Ты нарисовал(а) свою неизвестную планету.';
         } else {
-          status.textContent = '✓ Задание выполнено';
+          story.textContent = (task && task.prompt) || 'Полевое задание экспедиции.';
         }
 
-        var photoNote = document.createElement('p');
-        photoNote.className = 'diary__photo-note';
-        photoNote.textContent = entry.photoUploaded
-          ? ''
-          : '📷 Добавление фото появится позже. Можно продолжать экспедицию без фото.';
+        var status = document.createElement('p');
+        status.className = 'diary__status is-done';
+        status.textContent = '✓ Выполнено';
 
         var actions = document.createElement('div');
         actions.className = 'diary__item-actions';
-
-        if (!entry.photoUploaded) {
-          var addPhoto = document.createElement('a');
-          addPhoto.className = 'btn btn--secondary';
-          addPhoto.href = 'field-task.html?task=' + encodeURIComponent(entry.taskId) + '&save=1';
-          addPhoto.textContent = 'Добавить фото';
-          actions.appendChild(addPhoto);
-        }
 
         var openTask = document.createElement('a');
         openTask.className = 'btn btn--secondary';
@@ -136,9 +122,8 @@
 
         item.appendChild(head);
         item.appendChild(name);
-        if (prompt.textContent) item.appendChild(prompt);
+        item.appendChild(story);
         item.appendChild(status);
-        if (photoNote.textContent) item.appendChild(photoNote);
         item.appendChild(actions);
         list.appendChild(item);
       });
@@ -159,9 +144,5 @@
     var container = document.querySelector('[data-diary]');
     if (!container) return;
     renderDiary(container);
-
-    if (portal.getQueryParam && portal.getQueryParam('save') === '1') {
-      /* diary page doesn't auto-open adult gate; field-task handles save=1 */
-    }
   });
 })();
