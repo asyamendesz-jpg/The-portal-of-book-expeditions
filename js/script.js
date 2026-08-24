@@ -100,6 +100,10 @@
     }
 
     function openNav() {
+      if (window.innerWidth > MOBILE_BREAKPOINT) {
+        closeNav();
+        return;
+      }
       sidebar.classList.add('is-nav-open');
       overlay.removeAttribute('hidden');
       toggle.setAttribute('aria-expanded', 'true');
@@ -108,6 +112,10 @@
     }
 
     toggle.addEventListener('click', function () {
+      if (window.innerWidth > MOBILE_BREAKPOINT) {
+        closeNav();
+        return;
+      }
       if (isOpen()) closeNav();
       else openNav();
     });
@@ -127,6 +135,9 @@
     window.addEventListener('resize', function () {
       if (window.innerWidth > MOBILE_BREAKPOINT && isOpen()) closeNav();
     });
+
+    /* на случай залипшего overlay после прошлой сессии/бага */
+    closeNav();
   }
 
   function initMenu() {
