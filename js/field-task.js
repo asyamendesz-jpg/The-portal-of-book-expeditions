@@ -193,10 +193,6 @@
     hint.className = 'field-task__hint';
     hint.textContent = task.hint;
 
-    var offline = document.createElement('p');
-    offline.className = 'field-task__offline';
-    offline.textContent = 'Это задание для рук: отойди от экрана, сделай работу, потом возвращайся.';
-
     var done = document.createElement('button');
     done.type = 'button';
     done.className = 'btn btn--cta';
@@ -210,7 +206,6 @@
     panel.appendChild(title);
     panel.appendChild(prompt);
     panel.appendChild(hint);
-    panel.appendChild(offline);
     panel.appendChild(done);
     root.appendChild(panel);
   }
