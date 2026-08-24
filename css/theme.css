@@ -11,9 +11,7 @@
   /* без opacity:0 — меню и кнопки сразу доступны */
 }
 
-.content {
-  animation: contentRise var(--duration-slow) var(--ease-out) both;
-}
+.content { /* no entrance animation — buttons available immediately */ }
 
 .sidebar {
   animation: none;
@@ -110,20 +108,20 @@
 .passports-list__item,
 .trials-list__item,
 .kit-list__item {
-  animation: cardAppear var(--duration-slow) var(--ease-out) both;
+  animation: none;
 }
 
 .book-catalog__item:nth-child(1),
 .hero-list__item:nth-child(1),
-.cards-list__item:nth-child(1) { animation-delay: 0.05s; }
+.cards-list__item:nth-child(1) { animation-delay: 0s; }
 
 .book-catalog__item:nth-child(2),
 .hero-list__item:nth-child(2),
-.cards-list__item:nth-child(2) { animation-delay: 0.1s; }
+.cards-list__item:nth-child(2) { animation-delay: 0s; }
 
 .book-catalog__item:nth-child(3),
 .hero-list__item:nth-child(3),
-.cards-list__item:nth-child(3) { animation-delay: 0.15s; }
+.cards-list__item:nth-child(3) { animation-delay: 0s; }
 
 @keyframes cardAppear {
   from {

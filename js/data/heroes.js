@@ -9,7 +9,7 @@
       role: 'Главная героиня',
       description: 'Смелая и любознательная девочка, отправившаяся в космическое путешествие вместе с отцом.',
       bookId: 'alice-journey',
-      image: 'images/heroes/alice-selezneva.png',
+      image: 'images/heroes/alice-selezneva.jpg',
       color: '#e87461'
     },
     {
@@ -18,7 +18,7 @@
       role: 'Учёный',
       description: 'Учёный, космобиолог, отец Алисы.',
       bookId: 'alice-journey',
-      image: 'images/heroes/professor-seleznev.png',
+      image: 'images/heroes/professor-seleznev.jpg',
       color: '#6b8cae'
     },
     {
@@ -27,7 +27,7 @@
       role: 'Инопланетный друг',
       description: 'Великий археолог с планеты Чумароза. Добрый и верный спутник Алисы в приключениях.',
       bookId: 'alice-journey',
-      image: 'images/heroes/gromozeka.png',
+      image: 'images/heroes/gromozeka.jpg',
       color: '#5a7cbf'
     },
     {
@@ -36,7 +36,7 @@
       role: 'Командир корабля',
       description: 'Опытный капитан звездолёта, надёжный и справедливый.',
       bookId: 'alice-journey',
-      image: 'images/heroes/captain-poloskov.png',
+      image: 'images/heroes/captain-poloskov.jpg',
       color: '#3d5a80'
     },
     {
@@ -45,7 +45,7 @@
       role: 'Инженер',
       description: 'Механик корабля «Тайны». Надёжный инженер, который следит за работой двигателей и оборудования.',
       bookId: 'alice-journey',
-      image: 'images/heroes/mechanic-zelyony.png',
+      image: 'images/heroes/mechanic-zelyony.jpg',
       color: '#4a7c59'
     },
     {
@@ -54,7 +54,7 @@
       role: 'Житель далёких миров',
       description: 'Необычный обитатель космоса. Встреча с ним — одно из самых запоминающихся приключений Алисы.',
       bookId: 'alice-journey',
-      image: 'images/heroes/veselchak-u.png',
+      image: 'images/heroes/veselchak-u.jpg',
       color: '#c4a35a'
     }
   ];
