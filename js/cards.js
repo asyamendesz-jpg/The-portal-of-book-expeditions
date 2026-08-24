@@ -17,6 +17,14 @@
     return arr;
   }
 
+  function heroKey(hero) {
+    return hero.heroId || hero.id;
+  }
+
+  function hasTraits(hero) {
+    return !!(hero.traits && String(hero.traits).trim());
+  }
+
   function createCard(card) {
     var article = document.createElement('article');
     article.className = 'note-card card';
@@ -128,11 +136,14 @@
       }
 
       var hero = queue[index];
-      var wrong = shuffle(heroes.filter(function (h) { return h.id !== hero.id && h.heroId !== hero.heroId; })).slice(0, 2);
+      var wrong = shuffle(heroes.filter(function (h) {
+        return heroKey(h) !== heroKey(hero);
+      })).slice(0, 2);
       var choices = shuffle([hero].concat(wrong));
 
       progress.textContent = 'Герой ' + (index + 1) + ' из ' + queue.length;
       feedback.textContent = '';
+      feedback.className = 'guess-game__feedback';
       prompt.innerHTML = '';
 
       var role = document.createElement('p');
@@ -153,7 +164,7 @@
         btn.className = 'btn btn--secondary guess-game__choice';
         btn.textContent = choice.name;
         btn.addEventListener('click', function () {
-          var ok = choice.id === hero.id || choice.heroId === hero.heroId || choice.name === hero.name;
+          var ok = heroKey(choice) === heroKey(hero) || choice.name === hero.name;
           Array.prototype.forEach.call(options.querySelectorAll('button'), function (el) {
             el.disabled = true;
           });
@@ -163,8 +174,12 @@
             feedback.textContent = 'Верно! Это ' + hero.name + '.';
             feedback.className = 'guess-game__feedback is-ok';
           } else {
-            feedback.textContent = 'Это ' + hero.name + '. Запомни на следующий раз!';
+            feedback.textContent = 'Попробуй ещё раз — кажется, это другой герой.';
             feedback.className = 'guess-game__feedback is-miss';
+            Array.prototype.forEach.call(options.querySelectorAll('button'), function (el) {
+              el.disabled = false;
+            });
+            return;
           }
 
           window.setTimeout(function () {
@@ -179,75 +194,322 @@
     showRound();
   }
 
+  function createAssemblyCard(hero, revealed) {
+    var card = document.createElement('article');
+    card.className = 'assemble-card card';
+    card.setAttribute('aria-label', 'Карточка: ' + hero.name);
+
+    var portrait = document.createElement('div');
+    portrait.className = 'assemble-card__portrait' + (revealed.portrait ? ' is-filled' : '');
+    if (revealed.portrait && hero.image) {
+      var img = document.createElement('img');
+      img.src = hero.image;
+      img.alt = hero.name;
+      img.className = 'assemble-card__photo';
+      portrait.appendChild(img);
+    } else {
+      var ph = document.createElement('span');
+      ph.className = 'assemble-card__placeholder';
+      ph.textContent = 'Портрет';
+      portrait.appendChild(ph);
+    }
+    card.appendChild(portrait);
+
+    var nameEl = document.createElement('h3');
+    nameEl.className = 'assemble-card__name' + (revealed.name ? ' is-filled' : '');
+    nameEl.textContent = revealed.name ? hero.name : '???';
+    card.appendChild(nameEl);
+
+    if (hasTraits(hero) || revealed.traits) {
+      var traitsEl = document.createElement('p');
+      traitsEl.className = 'assemble-card__traits' + (revealed.traits ? ' is-filled' : '');
+      traitsEl.textContent = revealed.traits ? hero.traits : '✦ Качества героя';
+      card.appendChild(traitsEl);
+    }
+
+    var factEl = document.createElement('p');
+    factEl.className = 'assemble-card__fact' + (revealed.fact ? ' is-filled' : '');
+    factEl.textContent = revealed.fact ? ('✦ ' + hero.fact) : '✦ Интересный факт';
+    card.appendChild(factEl);
+
+    return card;
+  }
+
+  function pickWrongOptions(heroes, hero, mapFn, count) {
+    return shuffle(
+      heroes
+        .filter(function (h) { return heroKey(h) !== heroKey(hero); })
+        .map(mapFn)
+        .filter(Boolean)
+    ).slice(0, count);
+  }
+
   function renderBuildMode(container, nextHost) {
-    var heroes = getHeroPool();
+    var heroes = getHeroPool().slice();
+    var queue = heroes;
+    var heroIndex = 0;
+    var collected = [];
+
     container.innerHTML = '';
 
     var wrap = document.createElement('section');
     wrap.className = 'build-card-game';
-
-    var intro = document.createElement('p');
-    intro.className = 'build-card-game__intro';
-    intro.textContent = 'Выбери героя — и мы соберём его карточку.';
-    wrap.appendChild(intro);
-
-    var picker = document.createElement('div');
-    picker.className = 'build-card-game__picker';
-    wrap.appendChild(picker);
-
-    var preview = document.createElement('div');
-    preview.className = 'build-card-game__preview';
-    wrap.appendChild(preview);
-
-    var actions = document.createElement('div');
-    actions.className = 'build-card-game__actions';
-    wrap.appendChild(actions);
-
+    wrap.setAttribute('aria-live', 'polite');
     container.appendChild(wrap);
 
-    var selected = null;
+    function showIntro() {
+      wrap.innerHTML = '';
 
-    function showPreview(hero) {
-      selected = hero;
-      preview.innerHTML = '';
-      preview.appendChild(createCard(hero));
-      actions.innerHTML = '';
+      var title = document.createElement('h3');
+      title.className = 'build-card-game__title';
+      title.textContent = 'Собери карточку персонажа';
 
-      var ready = document.createElement('button');
-      ready.type = 'button';
-      ready.className = 'btn btn--cta';
-      ready.textContent = 'Карточка готова!';
-      ready.addEventListener('click', function () {
-        if (portal.completeStepAndShowNext) {
-          portal.completeStepAndShowNext('card', nextHost);
-        }
+      var sub = document.createElement('p');
+      sub.className = 'build-card-game__intro';
+      sub.textContent =
+        'Соедини имя, портрет, качества и интересный факт. Проверь, насколько хорошо ты запомнил героев экспедиции.';
+
+      var start = document.createElement('button');
+      start.type = 'button';
+      start.className = 'btn btn--cta';
+      start.textContent = 'Начать испытание';
+      start.addEventListener('click', function () {
+        heroIndex = 0;
+        collected = [];
+        startHeroRound();
       });
-      actions.appendChild(ready);
+
+      wrap.appendChild(title);
+      wrap.appendChild(sub);
+      wrap.appendChild(start);
     }
 
-    heroes.forEach(function (hero) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'build-card-game__hero btn btn--secondary';
-      if (hero.image) {
-        var img = document.createElement('img');
-        img.src = hero.image;
-        img.alt = '';
-        img.className = 'build-card-game__thumb';
-        btn.appendChild(img);
+    function startHeroRound() {
+      if (heroIndex >= queue.length) {
+        showFinale();
+        return;
       }
-      var span = document.createElement('span');
-      span.textContent = hero.name;
-      btn.appendChild(span);
-      btn.addEventListener('click', function () {
-        Array.prototype.forEach.call(picker.querySelectorAll('.build-card-game__hero'), function (el) {
-          el.classList.remove('is-active');
+
+      var hero = queue[heroIndex];
+      var revealed = { name: true, portrait: false, traits: false, fact: false };
+      var steps = [
+        {
+          id: 'portrait',
+          prompt: 'Какой портрет принадлежит этому герою?',
+          buildChoices: function () {
+            var wrong = pickWrongOptions(heroes, hero, function (h) {
+              return { value: h.image, label: h.name, image: h.image, key: heroKey(h) };
+            }, 2);
+            var correct = { value: hero.image, label: hero.name, image: hero.image, key: heroKey(hero) };
+            return shuffle([correct].concat(wrong));
+          },
+          check: function (choice) {
+            return choice.key === heroKey(hero);
+          },
+          apply: function () {
+            revealed.portrait = true;
+          },
+          kind: 'portrait'
+        }
+      ];
+
+      if (hasTraits(hero)) {
+        steps.push({
+          id: 'traits',
+          prompt: 'Какие качества принадлежат этому герою?',
+          buildChoices: function () {
+            var wrong = pickWrongOptions(heroes, hero, function (h) {
+              if (!hasTraits(h)) return null;
+              return { value: h.traits, label: h.traits, key: heroKey(h) };
+            }, 2);
+            return shuffle([{ value: hero.traits, label: hero.traits, key: heroKey(hero) }].concat(wrong));
+          },
+          check: function (choice) {
+            return choice.key === heroKey(hero);
+          },
+          apply: function () {
+            revealed.traits = true;
+          },
+          kind: 'text'
         });
-        btn.classList.add('is-active');
-        showPreview(hero);
+      }
+
+      steps.push({
+        id: 'fact',
+        prompt: 'Какой факт относится к этому герою?',
+        buildChoices: function () {
+          var wrong = pickWrongOptions(heroes, hero, function (h) {
+            return h.fact ? { value: h.fact, label: h.fact, key: heroKey(h) } : null;
+          }, 2);
+          return shuffle([{ value: hero.fact, label: hero.fact, key: heroKey(hero) }].concat(wrong));
+        },
+        check: function (choice) {
+          return choice.key === heroKey(hero);
+        },
+        apply: function () {
+          revealed.fact = true;
+        },
+        kind: 'text'
       });
-      picker.appendChild(btn);
-    });
+
+      var stepIndex = 0;
+
+      function renderRound() {
+        wrap.innerHTML = '';
+
+        var progress = document.createElement('p');
+        progress.className = 'build-card-game__progress';
+        progress.textContent = 'Герой ' + (heroIndex + 1) + ' из ' + queue.length;
+        wrap.appendChild(progress);
+
+        var dots = document.createElement('div');
+        dots.className = 'build-card-game__dots';
+        dots.setAttribute('aria-hidden', 'true');
+        queue.forEach(function (_, i) {
+          var dot = document.createElement('span');
+          dot.className = 'build-card-game__dot' +
+            (i < heroIndex ? ' is-done' : '') +
+            (i === heroIndex ? ' is-now' : '');
+          dots.appendChild(dot);
+        });
+        wrap.appendChild(dots);
+
+        var board = document.createElement('div');
+        board.className = 'build-card-game__board';
+        board.appendChild(createAssemblyCard(hero, revealed));
+        wrap.appendChild(board);
+
+        if (stepIndex >= steps.length) {
+          var doneTitle = document.createElement('p');
+          doneTitle.className = 'build-card-game__done-title';
+          doneTitle.textContent = 'Карточка собрана!';
+          wrap.appendChild(doneTitle);
+
+          var nextBtn = document.createElement('button');
+          nextBtn.type = 'button';
+          nextBtn.className = 'btn btn--cta';
+          nextBtn.textContent = heroIndex < queue.length - 1 ? 'Следующий герой →' : 'Посмотреть результат →';
+          nextBtn.addEventListener('click', function () {
+            collected.push(hero);
+            heroIndex += 1;
+            startHeroRound();
+          });
+          wrap.appendChild(nextBtn);
+          return;
+        }
+
+        var step = steps[stepIndex];
+        var question = document.createElement('p');
+        question.className = 'build-card-game__question';
+        question.textContent = step.prompt;
+        wrap.appendChild(question);
+
+        var feedback = document.createElement('p');
+        feedback.className = 'build-card-game__feedback';
+        wrap.appendChild(feedback);
+
+        var options = document.createElement('div');
+        options.className = 'build-card-game__options' +
+          (step.kind === 'portrait' ? ' build-card-game__options--portraits' : '');
+
+        step.buildChoices().forEach(function (choice) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'btn btn--secondary build-card-game__choice' +
+            (step.kind === 'portrait' ? ' build-card-game__choice--portrait' : '');
+
+          if (step.kind === 'portrait' && choice.image) {
+            var thumb = document.createElement('img');
+            thumb.src = choice.image;
+            thumb.alt = 'Вариант портрета';
+            thumb.className = 'build-card-game__choice-img';
+            btn.appendChild(thumb);
+          } else {
+            btn.textContent = choice.label;
+          }
+
+          btn.addEventListener('click', function () {
+            if (step.check(choice)) {
+              feedback.textContent = 'Верно!';
+              feedback.className = 'build-card-game__feedback is-ok';
+              step.apply();
+              Array.prototype.forEach.call(options.querySelectorAll('button'), function (el) {
+                el.disabled = true;
+              });
+              window.setTimeout(function () {
+                stepIndex += 1;
+                renderRound();
+              }, 700);
+            } else {
+              feedback.textContent = 'Кажется, это относится к другому герою. Попробуй ещё раз.';
+              feedback.className = 'build-card-game__feedback is-miss';
+            }
+          });
+
+          options.appendChild(btn);
+        });
+
+        wrap.appendChild(options);
+      }
+
+      renderRound();
+    }
+
+    function showFinale() {
+      wrap.innerHTML = '';
+
+      var title = document.createElement('h3');
+      title.className = 'build-card-game__title';
+      title.textContent = 'Все карточки собраны!';
+
+      var text = document.createElement('p');
+      text.className = 'build-card-game__intro';
+      text.textContent = 'Ты познакомился с героями экспедиции и собрал их портреты.';
+
+      var gallery = document.createElement('ul');
+      gallery.className = 'build-card-game__gallery';
+
+      collected.forEach(function (hero) {
+        var item = document.createElement('li');
+        item.className = 'build-card-game__gallery-item';
+        item.appendChild(createAssemblyCard(hero, {
+          name: true,
+          portrait: true,
+          traits: hasTraits(hero),
+          fact: true
+        }));
+        gallery.appendChild(item);
+      });
+
+      wrap.appendChild(title);
+      wrap.appendChild(text);
+      wrap.appendChild(gallery);
+
+      if (portal.markJourneyFlag) {
+        portal.markJourneyFlag('characterCardCompleted');
+        portal.markJourneyFlag('expeditionCompleted');
+      }
+
+      var cta = document.createElement('a');
+      cta.className = 'btn btn--cta';
+      cta.href = 'achievements.html';
+      cta.textContent = 'Посмотреть достижения →';
+      wrap.appendChild(cta);
+
+      var replay = document.createElement('button');
+      replay.type = 'button';
+      replay.className = 'btn btn--secondary build-card-game__replay';
+      replay.textContent = 'Пройти испытание ещё раз';
+      replay.addEventListener('click', showIntro);
+      wrap.appendChild(replay);
+
+      if (nextHost) {
+        nextHost.hidden = true;
+        nextHost.innerHTML = '';
+      }
+    }
+
+    showIntro();
   }
 
   portal.onReady(function () {
@@ -263,7 +525,9 @@
 
     if (mode === 'guess') {
       var bannerIntro = document.querySelector('.page-intro');
-      if (bannerIntro) bannerIntro.textContent = 'Узнай героя по описанию — без подсказок на портрете!';
+      if (bannerIntro) {
+        bannerIntro.textContent = 'Узнай героя по описанию — без подсказок на портрете!';
+      }
       var bannerTitle = document.querySelector('.page-title');
       if (bannerTitle) bannerTitle.textContent = 'Узнай героя по описанию';
       renderGuessMode(container, chrome.next);
@@ -272,7 +536,10 @@
 
     if (mode === 'build') {
       var buildIntro = document.querySelector('.page-intro');
-      if (buildIntro) buildIntro.textContent = 'Собери карточку персонажа для своей коллекции.';
+      if (buildIntro) {
+        buildIntro.textContent =
+          'Соедини имя, портрет, качества и интересный факт. Проверь, насколько хорошо ты запомнил героев.';
+      }
       var buildTitle = document.querySelector('.page-title');
       if (buildTitle) buildTitle.textContent = 'Собери карточку персонажа';
       renderBuildMode(container, chrome.next);

@@ -89,9 +89,27 @@
     width: 6px;
   }
 
-  .guess-game__choice,
-  .build-card-game__hero {
+  .guess-game__choice {
     width: 100%;
+  }
+
+  .build-card-game__options--portraits {
+    grid-template-columns: 1fr;
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .build-card-game__choice {
+    min-height: 52px;
+  }
+
+  .build-card-game__gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .assemble-card {
+    width: min(100%, 280px);
   }
 
   .trial-detail__pdf {

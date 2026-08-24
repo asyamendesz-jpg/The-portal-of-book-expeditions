@@ -14,18 +14,12 @@
     var title = document.createElement('h3');
     title.className = 'trial-card__title';
     title.textContent = quiz.title;
-    card.appendChild(title);
-
-    if (quiz.layerTag) {
-      var tag = document.createElement('p');
-      tag.className = 'trial-card__layer';
-      tag.textContent = quiz.layerTag;
-      card.appendChild(tag);
-    }
 
     var description = document.createElement('p');
     description.className = 'trial-card__description';
     description.textContent = quiz.description;
+
+    card.appendChild(title);
     card.appendChild(description);
 
     var link = document.createElement('a');

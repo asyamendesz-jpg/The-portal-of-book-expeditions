@@ -485,41 +485,236 @@
   color: #8b3a2f;
 }
 
-.build-card-game__picker {
+/* Сборка карточки персонажа */
+.build-card-game {
+  padding: var(--space-sm) 0;
+  text-align: center;
+}
+
+.build-card-game__title {
+  margin: 0 0 var(--space-sm);
+  font-size: clamp(1.2rem, 2.8vw, 1.55rem);
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.build-card-game__progress {
+  margin: 0 0 var(--space-xs);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.build-card-game__dots {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: var(--space-md);
+}
+
+.build-card-game__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(26, 40, 64, 0.2);
+}
+
+.build-card-game__dot.is-done {
+  background: #2f6b4f;
+}
+
+.build-card-game__dot.is-now {
+  background: #5b4bb4;
+  box-shadow: 0 0 0 3px rgba(91, 75, 180, 0.25);
+}
+
+.build-card-game__board {
+  display: flex;
   justify-content: center;
   margin-bottom: var(--space-md);
 }
 
-.build-card-game__hero {
-  flex-direction: column;
-  min-width: 110px;
-  padding: 0.5rem;
+.assemble-card {
+  width: min(100%, 300px);
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
 }
 
-.build-card-game__hero.is-active {
-  border-color: var(--navy-light);
-  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.15);
+.assemble-card__portrait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  background: var(--parchment);
+  border-bottom: 1px solid rgba(26, 40, 64, 0.08);
 }
 
-.build-card-game__thumb {
-  width: 64px;
-  height: 64px;
+.assemble-card__portrait.is-filled {
+  background: #fff;
+}
+
+.assemble-card__photo {
+  width: 100%;
+  height: 200px;
   object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 0.35rem;
+  object-position: top center;
+  display: block;
 }
 
-.build-card-game__preview {
-  max-width: 320px;
+.assemble-card__placeholder {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.assemble-card__name,
+.assemble-card__traits,
+.assemble-card__fact {
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  border-top: 1px solid rgba(26, 40, 64, 0.08);
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.assemble-card__name {
+  font-size: 1.05rem;
+  color: var(--navy);
+  text-align: center;
+}
+
+.assemble-card__name:not(.is-filled),
+.assemble-card__traits:not(.is-filled),
+.assemble-card__fact:not(.is-filled) {
+  opacity: 0.45;
+  font-style: italic;
+}
+
+.assemble-card__name.is-filled,
+.assemble-card__traits.is-filled,
+.assemble-card__fact.is-filled {
+  opacity: 1;
+  font-style: normal;
+  color: var(--ink);
+}
+
+.assemble-card__name.is-filled {
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.assemble-card__traits {
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.assemble-card__fact {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  background: rgba(91, 75, 180, 0.06);
+}
+
+.build-card-game__question {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.build-card-game__feedback {
+  min-height: 1.4em;
+  margin: 0 0 var(--space-sm);
+  font-weight: 700;
+}
+
+.build-card-game__feedback.is-ok {
+  color: #2f6b4f;
+}
+
+.build-card-game__feedback.is-miss {
+  color: #8b3a2f;
+}
+
+.build-card-game__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 520px;
   margin: 0 auto var(--space-md);
 }
 
-.build-card-game__actions {
-  display: flex;
-  justify-content: center;
+.build-card-game__options--portraits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-sm);
+  max-width: 420px;
+}
+
+.build-card-game__choice {
+  width: 100%;
+  min-height: 48px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0.75rem 1rem;
+}
+
+.build-card-game__choice--portrait {
+  padding: 0.4rem;
+  flex-direction: column;
+}
+
+.build-card-game__choice-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+.build-card-game__done-title {
+  margin: 0 0 var(--space-md);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #2f6b4f;
+}
+
+.build-card-game__gallery {
+  list-style: none;
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-md);
+}
+
+.build-card-game__gallery-item .assemble-card {
+  width: 100%;
+}
+
+.build-card-game__gallery-item .assemble-card__photo {
+  height: 120px;
+}
+
+.build-card-game__gallery-item .assemble-card__name,
+.build-card-game__gallery-item .assemble-card__fact,
+.build-card-game__gallery-item .assemble-card__traits {
+  padding: 0.45rem 0.55rem;
+  font-size: 0.75rem;
+}
+
+.build-card-game__replay {
+  margin-top: var(--space-sm);
+}
+
+.build-card-game .btn--cta {
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .achievements {
