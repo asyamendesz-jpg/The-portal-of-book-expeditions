@@ -112,6 +112,11 @@
     width: min(100%, 280px);
   }
 
+  .adult-survey__choice {
+    min-height: 56px;
+    font-size: 0.95rem;
+  }
+
   .trial-detail__pdf {
     min-height: 280px;
   }

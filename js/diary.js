@@ -38,8 +38,7 @@
   };
 
   /**
-   * Отметить полевое задание выполненным.
-   * photoUploaded всегда false, пока нет безопасного storage.
+   * Отметить полевое задание выполненным (без фото).
    */
   portal.completeFieldTask = function (task) {
     if (!task || !task.id) return null;
@@ -57,21 +56,23 @@
 
     if (existing) {
       existing.status = 'completed';
+      existing.completed = true;
       existing.taskCompleted = true;
-      existing.photoUploaded = false;
       existing.updatedAt = new Date().toISOString();
+      existing.completedAt = existing.completedAt || existing.updatedAt;
     } else {
+      var now = new Date().toISOString();
       entries.push({
         id: makeId(),
         taskId: task.id,
         expeditionId: task.expeditionId || 'alice-journey',
         type: task.type || 'draw',
         title: task.title || task.prompt,
-        imageUrl: null,
-        createdAt: new Date().toISOString(),
+        createdAt: now,
+        completedAt: now,
         status: 'completed',
-        taskCompleted: true,
-        photoUploaded: false
+        completed: true,
+        taskCompleted: true
       });
     }
 
@@ -94,10 +95,5 @@
       if (tasks[i].id === taskId) return tasks[i];
     }
     return tasks[0] || null;
-  };
-
-  /** Загрузка фото пока недоступна — нет безопасного backend/storage. */
-  portal.isPhotoUploadAvailable = function () {
-    return false;
   };
 })(window);
