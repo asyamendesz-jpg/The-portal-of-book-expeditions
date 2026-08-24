@@ -63,6 +63,40 @@
   .expedition-card {
     padding: var(--space-md);
   }
+
+  .trial-detail {
+    padding: var(--space-md);
+  }
+
+  .trial-detail__actions {
+    flex-direction: column;
+  }
+
+  .trial-detail__actions .btn {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .journey-trail__list {
+    gap: 0.2rem 0.25rem;
+  }
+
+  .journey-trail__label {
+    font-size: 0.75rem;
+  }
+
+  .journey-trail__connector {
+    width: 6px;
+  }
+
+  .guess-game__choice,
+  .build-card-game__hero {
+    width: 100%;
+  }
+
+  .trial-detail__pdf {
+    min-height: 280px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

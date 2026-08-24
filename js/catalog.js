@@ -8,6 +8,10 @@
     if (!container) return;
 
     portal.renderBookGrid(container);
+
+    if (portal.initBookTravelJourney) {
+      portal.initBookTravelJourney();
+    }
   }
 
   portal.onReady(initCatalog);

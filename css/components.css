@@ -312,123 +312,17 @@
   font-weight: 700;
 }
 
-.trial-detail__layer,
-.trial-card__layer {
-  margin: 0 0 var(--space-sm);
-  font-size: 0.88rem;
-  font-weight: 800;
-  color: var(--navy-light);
-}
-
-.trial-done {
-  margin-top: var(--space-lg);
-  padding: var(--space-md);
-  border-radius: var(--radius-sm);
-  background: var(--parchment);
-  border-left: 4px solid var(--gold);
-}
-
-.trial-done__title {
-  margin: 0 0 0.35rem;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--navy);
-}
-
-.trial-done__text {
-  margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: var(--ink-soft);
-}
-
-.trial-proof {
-  margin-top: var(--space-md);
-  border: 1px solid rgba(26, 40, 64, 0.12);
-  border-radius: var(--radius-sm);
-  background: var(--white);
-}
-
-.trial-proof__summary {
-  cursor: pointer;
-  list-style: none;
-  padding: var(--space-md);
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--navy);
-}
-
-.trial-proof__summary::-webkit-details-marker {
-  display: none;
-}
-
-.trial-proof__summary::after {
-  content: ' ↓';
-  font-weight: 700;
-  color: var(--gold);
-}
-
-.trial-proof[open] .trial-proof__summary::after {
-  content: ' ↑';
-}
-
-.trial-proof__body {
-  padding: 0 var(--space-md) var(--space-md);
-  border-top: 1px solid rgba(26, 40, 64, 0.08);
-}
-
-.trial-proof__note {
-  margin: var(--space-sm) 0 var(--space-md);
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-}
-
-.trial-proof__heading {
-  margin: var(--space-md) 0 0.35rem;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
-.trial-proof__text {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: var(--ink);
-}
-
-.trial-proof__key {
-  margin: var(--space-md) 0 0;
+/* Детский маршрут экспедиции */
+.journey-trail {
+  margin: 0 0 var(--space-md);
   padding: var(--space-sm) var(--space-md);
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.45;
-  color: var(--navy);
   background: var(--parchment);
+  border: 1px solid rgba(26, 40, 64, 0.08);
   border-radius: var(--radius-sm);
 }
 
-.trial-proof__channels {
-  margin-top: var(--space-md);
-}
-
-.trial-proof__channels-title {
-  margin: 0 0 var(--space-sm);
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--navy);
-}
-
-.trial-proof__channel-list {
-  margin: 0;
-  display: grid;
-  gap: 0.55rem;
-}
-
-.trial-proof__channel-list dt {
-  margin: 0;
+.journey-trail__title {
+  margin: 0 0 var(--space-xs);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -436,94 +330,241 @@
   color: var(--gold);
 }
 
-.trial-proof__channel-list dd {
-  margin: 0.15rem 0 0;
-  font-size: 0.92rem;
-  color: var(--ink-soft);
-}
-
-.trial-proof__actions {
+.journey-trail__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm);
-  margin-top: var(--space-md);
+  align-items: center;
+  gap: 0.15rem 0.35rem;
 }
 
-.trial-proof__actions .btn {
-  flex: 1 1 220px;
+.journey-trail__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
 }
 
-.adult-proof {
-  margin-top: var(--space-lg);
-  padding-top: var(--space-lg);
-  border-top: 1px dashed rgba(26, 40, 64, 0.18);
+.journey-trail__item--done {
+  color: var(--navy);
 }
 
-.adult-proof__eyebrow {
-  margin: 0 0 0.5rem;
-  font-size: 0.78rem;
+.journey-trail__item--now {
+  color: var(--navy);
   font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--gold);
 }
 
-.adult-proof__title {
-  margin: 0 0 var(--space-md);
+.journey-trail__item--now .journey-trail__marker {
+  color: #5b4bb4;
+}
+
+.journey-trail__item--ahead {
+  opacity: 0.55;
+}
+
+.journey-trail__marker {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.journey-trail__connector {
+  width: 10px;
+  height: 2px;
+  background: rgba(26, 40, 64, 0.2);
+  list-style: none;
+}
+
+.journey-next,
+.journey-tip {
+  margin: var(--space-md) 0;
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.journey-next__title,
+.journey-tip__title {
+  margin: 0 0 var(--space-sm);
   font-size: 1.15rem;
   font-weight: 800;
   color: var(--navy);
 }
 
-.adult-proof__stack {
-  display: grid;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
+.journey-next__text,
+.journey-tip__text {
+  margin: 0 0 var(--space-md);
+  color: var(--ink-soft);
+  line-height: 1.55;
 }
 
-.adult-proof__stack h4 {
-  margin: 0 0 0.35rem;
-  font-size: 0.82rem;
+.journey-next__cta,
+.journey-tip .btn--cta {
+  max-width: 360px;
+}
+
+.book-picker__btn--soon {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.book-picker__badge,
+.book-picker__available {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--gold);
 }
 
-.adult-proof__stack p {
+.book-picker__badge {
+  color: var(--ink-soft);
+}
+
+.book-picker__available {
+  color: #2f6b4f;
+}
+
+.book-picker__btn.is-active .book-picker__available {
+  color: var(--navy);
+}
+
+.guess-game__intro,
+.build-card-game__intro,
+.guess-game__progress,
+.guess-game__feedback,
+.guess-game__done {
+  margin: 0 0 var(--space-sm);
+  text-align: center;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.guess-game__prompt {
+  margin: 0 auto var(--space-md);
+  max-width: 520px;
+  padding: var(--space-md);
+  text-align: left;
+}
+
+.guess-game__role {
+  margin: 0 0 var(--space-xs);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.guess-game__desc {
   margin: 0;
-  font-size: 0.95rem;
   line-height: 1.55;
   color: var(--ink);
 }
 
-.adult-proof__try {
-  padding: var(--space-md);
-  border-radius: var(--radius-sm);
-  background: var(--parchment);
-  border-left: 4px solid var(--gold);
+.guess-game__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  margin-bottom: var(--space-sm);
 }
 
-.adult-proof__try h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
+.guess-game__choice {
+  min-width: 140px;
+}
+
+.guess-game__feedback.is-ok {
+  color: #2f6b4f;
+}
+
+.guess-game__feedback.is-miss {
+  color: #8b3a2f;
+}
+
+.build-card-game__picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.build-card-game__hero {
+  flex-direction: column;
+  min-width: 110px;
+  padding: 0.5rem;
+}
+
+.build-card-game__hero.is-active {
+  border-color: var(--navy-light);
+  box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.15);
+}
+
+.build-card-game__thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.35rem;
+}
+
+.build-card-game__preview {
+  max-width: 320px;
+  margin: 0 auto var(--space-md);
+}
+
+.build-card-game__actions {
+  display: flex;
+  justify-content: center;
+}
+
+.achievements {
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.achievements__title {
+  margin: 0 0 var(--space-sm);
+  font-size: clamp(1.25rem, 2.8vw, 1.7rem);
   font-weight: 800;
   color: var(--navy);
 }
 
-.adult-proof__try p {
+.achievements__lead {
   margin: 0 0 var(--space-md);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.achievements__list {
+  list-style: none;
+  margin: 0 auto var(--space-lg);
+  padding: 0;
+  max-width: 420px;
+  text-align: left;
+}
+
+.achievements__item {
+  padding: 0.55rem 0.75rem;
+  margin-bottom: 0.4rem;
+  border-radius: var(--radius-sm);
+  background: var(--parchment);
+  font-weight: 700;
   color: var(--ink-soft);
 }
 
-.adult-proof__case {
-  margin: var(--space-md) 0 0;
-  font-size: 0.9rem;
+.achievements__item.is-done {
+  color: var(--navy);
+  background: rgba(47, 107, 79, 0.12);
 }
 
-.adult-proof__case a {
-  color: var(--navy-light);
-  font-weight: 700;
+.achievements__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
 }

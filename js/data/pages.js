@@ -16,62 +16,63 @@
 
   global.ReadingPortal.banners = {
     'book-travel': {
-      image: 'images/mockups/knizhnye-puteshestviya.jpg',
+      image: 'images/mockups/knizhnye-puteshestviya.png',
       alt: 'Карта книжных путешествий',
       title: 'Книжные путешествия',
       intro: 'Выбери маршрут и отправляйся в увлекательное приключение!'
     },
     heroes: {
-      image: 'images/mockups/geroi-knig.jpg',
+      image: 'images/mockups/geroi-knig.png',
       alt: 'Герои книг',
       title: 'Герои книг',
       intro: 'Загляни внутрь книги и познакомься с героями!'
     },
     cards: {
-      image: 'images/mockups/kartochki.jpg',
+      image: 'images/mockups/kartochki.png',
       alt: 'Карточки персонажей',
       title: 'Карточки персонажей',
       intro: 'Собери коллекцию героев любимых книг!'
     },
     passports: {
-      image: 'images/mockups/kartochki.jpg',
+      image: 'images/mockups/kartochki.png',
       alt: 'Паспорта героев',
       title: 'Паспорта героев',
       intro: 'Заполни личное досье участника книжной экспедиции.'
     },
     comics: {
-      image: 'images/mockups/komiksy.jpg',
+      image: 'images/mockups/komiksy.png',
       alt: 'Комиксы читателей',
       title: 'Комиксы читателей',
       intro: 'Твои истории оживают в кадрах!'
     },
     workbooks: {
-      image: 'images/mockups/expeditsiya-start.jpg',
+      image: 'images/mockups/expeditsiya-start.png',
       alt: 'Экспедиционные комплекты',
       title: 'Экспедиционные комплекты',
       intro: 'Скачай PDF-материалы из архива путешественника.'
     },
     quiz: {
-      image: 'images/mockups/viktoriny.jpg',
+      image: 'images/mockups/viktoriny.png',
       alt: 'Викторины и загадки',
       title: 'Викторины и загадки',
       intro: 'Проверь себя, узнай новое, стань настоящим знатоком книг!'
     },
     adults: {
-      image: 'images/mockups/glavnaya.jpg',
+      image: 'images/mockups/glavnaya.png',
       alt: 'Для взрослых',
       title: 'Взрослым',
-      intro: 'Как сопровождать экспедицию — и почему продукт устроен именно так.'
+      intro: 'Материалы для родителей, учителей и библиотекарей.'
     }
   };
 
   global.ReadingPortal.expeditionRoute = [
-    { icon: '📦', text: 'Получи комплект исследователя (скачать PDF)', href: 'workbooks.html' },
-    { icon: '⭐', text: 'Прослушай аудиоэпизод', href: 'trial-cards.html' },
-    { icon: '⭐', text: 'Познакомься с героями', href: 'heroes.html' },
-    { icon: '⭐', text: 'Выполни задания', href: 'trial-tasks.html' },
-    { icon: '⭐', text: 'Узнай героя по описанию', href: 'cards.html' },
-    { icon: '⭐', text: 'Собери карточку персонажа', href: 'cards.html' },
-    { icon: '⭐', text: 'Получи достижение', href: 'trial-cards.html' }
+    { icon: '🗺️', text: 'Книжные путешествия', href: 'book-travel.html' },
+    { icon: '⭐', text: 'Выбери книгу — Приключения Алисы', href: 'heroes.html?book=alice-journey' },
+    { icon: '🎧', text: 'Послушай эпизод', href: 'trial-cards.html' },
+    { icon: '⭐', text: 'Познакомься с героями', href: 'heroes.html?book=alice-journey&step=meet' },
+    { icon: '✏️', text: 'Выполни задания', href: 'trial-tasks.html' },
+    { icon: '🔍', text: 'Узнай героя по описанию', href: 'cards.html?mode=guess' },
+    { icon: '🃏', text: 'Собери карточку персонажа', href: 'cards.html?mode=build' },
+    { icon: '🏆', text: 'Посмотри достижения', href: 'achievements.html' }
   ];
 })(window);

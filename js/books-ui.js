@@ -59,6 +59,11 @@
     if (!isSoon) {
       link.href = linkHref;
       link.setAttribute('aria-label', linkText + ': ' + (book.subtitle || book.title));
+      if (book.id === 'alice-journey' && global.ReadingPortal.markJourneyFlag) {
+        link.addEventListener('click', function () {
+          global.ReadingPortal.markJourneyFlag('bookSelected');
+        });
+      }
     }
     link.textContent = linkText;
     body.appendChild(link);

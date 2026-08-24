@@ -196,11 +196,12 @@
       var item = document.createElement('li');
       item.className = 'book-picker__item';
 
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'book-picker__btn card';
-      if (book.id === selectedBookId) btn.classList.add('is-active');
-      btn.dataset.bookId = book.id;
+      var isSoon = book.status === 'soon';
+      var btn = document.createElement(isSoon ? 'span' : 'button');
+      if (!isSoon) btn.type = 'button';
+      btn.className = 'book-picker__btn card' + (isSoon ? ' book-picker__btn--soon' : '');
+      if (book.id === selectedBookId && !isSoon) btn.classList.add('is-active');
+      if (!isSoon) btn.dataset.bookId = book.id;
 
       if (book.cover) {
         var img = document.createElement('img');
@@ -208,12 +209,6 @@
         img.src = book.cover;
         img.alt = '';
         img.setAttribute('aria-hidden', 'true');
-        img.decoding = 'async';
-        if (book.id === selectedBookId) {
-          img.fetchPriority = 'high';
-        } else {
-          img.loading = 'lazy';
-        }
         btn.appendChild(img);
       }
 
@@ -222,13 +217,25 @@
       title.textContent = book.title;
       btn.appendChild(title);
 
-      btn.addEventListener('click', function () {
-        selectedBookId = book.id;
-        onSelect(book.id);
-        container.querySelectorAll('.book-picker__btn').forEach(function (el) {
-          el.classList.toggle('is-active', el.dataset.bookId === book.id);
+      if (isSoon) {
+        var badge = document.createElement('span');
+        badge.className = 'book-picker__badge';
+        badge.textContent = 'Скоро';
+        btn.appendChild(badge);
+      } else {
+        var available = document.createElement('span');
+        available.className = 'book-picker__available';
+        available.textContent = 'Открыто сейчас';
+        btn.appendChild(available);
+
+        btn.addEventListener('click', function () {
+          selectedBookId = book.id;
+          onSelect(book.id);
+          container.querySelectorAll('.book-picker__btn').forEach(function (el) {
+            el.classList.toggle('is-active', el.dataset.bookId === book.id);
+          });
         });
-      });
+      }
 
       item.appendChild(btn);
       list.appendChild(item);
@@ -261,6 +268,79 @@
     container.appendChild(list);
   }
 
+  function renderHeroesJourneyPanel(bookId, listEl) {
+    var step = portal.getQueryParam('step');
+    var isAlice = bookId === 'alice-journey';
+    var host = document.querySelector('[data-journey-heroes-cta]');
+    var content = document.querySelector('main.content');
+
+    if (!host && content) {
+      host = document.createElement('div');
+      host.setAttribute('data-journey-heroes-cta', '');
+      if (listEl && listEl.parentNode) {
+        listEl.parentNode.insertBefore(host, listEl);
+      } else {
+        content.appendChild(host);
+      }
+    }
+
+    if (!host) return;
+    host.innerHTML = '';
+
+    if (!isAlice) {
+      host.hidden = true;
+      return;
+    }
+
+    host.hidden = false;
+    portal.markJourneyFlag('bookSelected');
+
+    if (step === 'meet') {
+      if (portal.mountJourneyChrome) {
+        portal.mountJourneyChrome({ currentStepId: 'heroes' });
+      }
+
+      var meetPanel = document.createElement('div');
+      meetPanel.className = 'journey-tip card';
+      meetPanel.innerHTML =
+        '<h3 class="journey-tip__title">Познакомься с героями</h3>' +
+        '<p class="journey-tip__text">Рассмотри портреты и прочитай, кто есть кто. Когда будешь готов(а) — идём дальше.</p>';
+
+      var meetBtn = document.createElement('button');
+      meetBtn.type = 'button';
+      meetBtn.className = 'btn btn--cta';
+      meetBtn.textContent = 'Я познакомился(ась) с героями →';
+      meetBtn.addEventListener('click', function () {
+        var nextHost = document.querySelector('[data-journey-next]');
+        if (!nextHost && content) {
+          nextHost = document.createElement('div');
+          nextHost.setAttribute('data-journey-next', '');
+          content.appendChild(nextHost);
+        }
+        if (portal.completeStepAndShowNext) {
+          portal.completeStepAndShowNext('heroes', nextHost);
+        }
+      });
+
+      meetPanel.appendChild(meetBtn);
+      host.appendChild(meetPanel);
+      return;
+    }
+
+    var startPanel = document.createElement('div');
+    startPanel.className = 'journey-tip card';
+    startPanel.innerHTML =
+      '<h3 class="journey-tip__title">Приключения Алисы</h3>' +
+      '<p class="journey-tip__text">Книга выбрана! Сейчас начинается путешествие. Сначала послушай эпизод.</p>';
+
+    var startLink = document.createElement('a');
+    startLink.className = 'btn btn--cta';
+    startLink.href = 'trial-cards.html';
+    startLink.textContent = 'Послушать эпизод →';
+    startPanel.appendChild(startLink);
+    host.appendChild(startPanel);
+  }
+
   function initHeroesPage() {
     var pickerEl = document.querySelector('[data-hero-books]');
     var listEl = document.querySelector('[data-hero-list]');
@@ -269,20 +349,20 @@
     var books = portal.books || [];
     if (!books.length) return;
 
-    var openBook = null;
-    for (var i = 0; i < books.length; i++) {
-      if (books[i].status === 'open') {
-        openBook = books[i];
-        break;
-      }
+    selectedBookId = portal.getQueryParam('book') || books[0].id;
+
+    var selectedBook = portal.getBookById ? portal.getBookById(selectedBookId) : null;
+    if (!selectedBook || selectedBook.status === 'soon') {
+      selectedBookId = books[0].id;
     }
-    selectedBookId = portal.getQueryParam('book') || (openBook || books[0]).id;
 
     renderBookPicker(pickerEl, function (bookId) {
       renderHeroesList(listEl, bookId);
+      renderHeroesJourneyPanel(bookId, listEl);
     });
 
     renderHeroesList(listEl, selectedBookId);
+    renderHeroesJourneyPanel(selectedBookId, listEl);
   }
 
   function initPageBanner() {
@@ -302,8 +382,7 @@
     img.className = 'page-banner__img';
     img.src = meta.image;
     img.alt = meta.alt;
-    img.decoding = 'async';
-    img.fetchPriority = 'high';
+    img.loading = 'lazy';
     figure.appendChild(img);
     bannerEl.appendChild(figure);
 
@@ -328,9 +407,4 @@
     initPageBanner();
     initHeroesPage();
   });
-
-  // Навигация сразу после парсинга DOM (defer), не ждём картинки
-  if (document.readyState !== 'loading') {
-    initMenu();
-  }
 })();

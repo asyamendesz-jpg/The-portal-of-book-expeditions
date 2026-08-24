@@ -69,6 +69,10 @@
     if (booksEl) {
       renderBooksSection(booksEl);
     }
+
+    if (portal.initHomeJourneyCta) {
+      portal.initHomeJourneyCta();
+    }
   }
 
   portal.onReady(initHome);

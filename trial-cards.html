@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/theme.css">
 </head>
-<body class="page--quiz page--trial" data-trial-id="alice-cards">
+<body class="page--quiz page--trial">
   <div class="page">
     <header class="header">
       <div class="header__inner">
@@ -35,11 +35,10 @@
       <main class="content">
         <div class="content-area card">
           <section class="trial-detail card" aria-labelledby="trial-title">
-            <a class="trial-detail__back" href="quiz.html">← К испытаниям</a>
+            <a class="trial-detail__back" href="heroes.html?book=alice-journey">← К выбору книги</a>
             <p class="trial-detail__section">Приключения Алисы</p>
-            <h2 class="trial-detail__title" id="trial-title">Карточки Алисы</h2>
-            <p class="trial-detail__layer">Вспомнить через действие</p>
-            <p class="trial-detail__instruction">Внимательно прослушай аудиозапись. Затем скачай PDF с карточками и выполни задания от руки.</p>
+            <h2 class="trial-detail__title" id="trial-title">Послушай эпизод</h2>
+            <p class="trial-detail__instruction">Внимательно прослушай аудиозапись. Затем можно посмотреть PDF с карточками.</p>
             <div class="trial-detail__actions">
               <button type="button" class="btn btn--secondary" id="play-audio">▶ Прослушать отрывок</button>
               <a class="btn btn--primary" href="pdf/kartochki-alisy.pdf" download="kartochki-alisy.pdf">Скачать задание PDF</a>
@@ -51,7 +50,7 @@
               <p class="trial-detail__pdf-label">Просмотр задания:</p>
               <iframe class="trial-detail__pdf" data-src="pdf/kartochki-alisy.pdf" title="Карточки Алисы — PDF" loading="lazy"></iframe>
             </div>
-            <div data-trial-proof></div>
+            <div data-journey-next hidden></div>
           </section>
         </div>
       </main>
@@ -63,8 +62,9 @@
   </div>
   <script src="js/utils.js" defer></script>
   <script src="js/data/pages.js" defer></script>
+  <script src="js/data/journey.js" defer></script>
+  <script src="js/journey.js" defer></script>
   <script src="js/trial-page.js" defer></script>
-  <script src="js/trial-proof.js" defer></script>
   <script src="js/script.js" defer></script>
 </body>
 </html>

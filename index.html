@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="css/buttons.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/theme.css">
-  <link rel="preload" as="image" href="images/mockups/glavnaya.jpg">
 </head>
 <body class="page--home">
   <div class="page">
@@ -36,21 +35,22 @@
       </aside>
       <main class="content">
         <figure class="page-hero">
-          <img class="page-hero__img" src="images/mockups/glavnaya.jpg" alt="Портал книжных экспедиций — карта книжных миров" fetchpriority="high" decoding="async">
+          <img class="page-hero__img" src="images/mockups/glavnaya.png" alt="Портал книжных экспедиций — карта книжных миров" loading="lazy" decoding="async">
         </figure>
         <section class="expedition-card card">
           <h2 class="expedition-card__title">🚀 Экспедиция готова к старту</h2>
           <h3 class="expedition-card__subtitle">Маршрут экспедиции:</h3>
           <ul class="expedition-route">
-            <li class="expedition-route__item"><a class="expedition-route__link" href="workbooks.html"><span class="expedition-route__icon">📦</span> Получи комплект исследователя (скачать PDF)</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="trial-cards.html"><span class="expedition-route__icon">⭐</span> Прослушай аудиоэпизод</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="heroes.html"><span class="expedition-route__icon">⭐</span> Познакомься с героями</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="trial-tasks.html"><span class="expedition-route__icon">⭐</span> Выполни задания</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="cards.html"><span class="expedition-route__icon">⭐</span> Узнай героя по описанию</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="cards.html"><span class="expedition-route__icon">⭐</span> Собери карточку персонажа</a></li>
-            <li class="expedition-route__item"><a class="expedition-route__link" href="trial-cards.html"><span class="expedition-route__icon">⭐</span> Получи достижение</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="book-travel.html"><span class="expedition-route__icon">🗺️</span> Книжные путешествия</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="heroes.html?book=alice-journey"><span class="expedition-route__icon">⭐</span> Выбери книгу — Приключения Алисы</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="trial-cards.html"><span class="expedition-route__icon">🎧</span> Послушай эпизод</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="heroes.html?book=alice-journey&amp;step=meet"><span class="expedition-route__icon">⭐</span> Познакомься с героями</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="trial-tasks.html"><span class="expedition-route__icon">✏️</span> Выполни задания</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="cards.html?mode=guess"><span class="expedition-route__icon">🔍</span> Узнай героя по описанию</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="cards.html?mode=build"><span class="expedition-route__icon">🃏</span> Собери карточку персонажа</a></li>
+            <li class="expedition-route__item"><a class="expedition-route__link" href="achievements.html"><span class="expedition-route__icon">🏆</span> Посмотри достижения</a></li>
           </ul>
-          <a class="btn btn--cta" href="book-travel.html">🚀 НАЧАТЬ ЭКСПЕДИЦИЮ</a>
+          <a class="btn btn--cta" data-journey-home-cta href="book-travel.html">🚀 НАЧАТЬ ЭКСПЕДИЦИЮ</a>
         </section>
         <div data-home-books></div>
       </main>
@@ -60,11 +60,13 @@
       <p class="footer__text">Каждая книга — новое путешествие. Каждый читатель — исследователь.</p>
     </footer>
   </div>
-  <script src="js/utils.js" defer></script>
-  <script src="js/data/pages.js" defer></script>
-  <script src="js/data/books.js" defer></script>
-  <script src="js/books-ui.js" defer></script>
-  <script src="js/home.js" defer></script>
-  <script src="js/script.js" defer></script>
+  <script src="js/utils.js"></script>
+  <script src="js/data/pages.js"></script>
+  <script src="js/data/books.js"></script>
+  <script src="js/data/journey.js"></script>
+  <script src="js/journey.js"></script>
+  <script src="js/books-ui.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
