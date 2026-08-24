@@ -70,7 +70,7 @@
     { icon: '⭐', text: 'Прослушай аудиоэпизод', href: 'trial-cards.html' },
     { icon: '⭐', text: 'Познакомься с героями', href: 'heroes.html' },
     { icon: '⭐', text: 'Выполни задания', href: 'trial-tasks.html' },
-    { icon: '⭐', text: 'Помоги восстановить портрет неизвестного героя', href: 'cards.html' },
+    { icon: '⭐', text: 'Узнай героя по описанию', href: 'cards.html' },
     { icon: '⭐', text: 'Собери карточку персонажа', href: 'cards.html' },
     { icon: '⭐', text: 'Получи достижение', href: 'trial-cards.html' }
   ];
