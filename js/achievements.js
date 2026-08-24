@@ -212,12 +212,9 @@
 
     container.appendChild(actions);
 
+    /* Hotfix: опрос перенесён в Дневник — на Достижениях не показывать */
     var surveyHost = document.querySelector('[data-adult-survey]');
-    if (allDone && surveyHost) {
-      renderAdultSurvey(surveyHost);
-    } else if (surveyHost) {
-      surveyHost.hidden = true;
-    }
+    if (surveyHost) surveyHost.hidden = true;
   }
 
   portal.onReady(function () {

@@ -13,7 +13,8 @@
 }
 
 @media (max-width: 768px) {
-  .nav-toggle {
+  .nav-toggle,
+  .nav-toggle.btn {
     display: inline-flex;
     margin-left: auto;
   }
