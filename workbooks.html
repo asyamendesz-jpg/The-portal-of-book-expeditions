@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Внеклассное чтение — Экспедиционные комплекты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/navigation.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body class="page--workbooks">
+  <div class="page">
+    <header class="header">
+      <div class="header__inner">
+        <img class="header__star header__star--left" src="images/decor/star.svg" alt="" aria-hidden="true">
+        <div class="header__content">
+          <h1 class="header__title">Внеклассное чтение</h1>
+          <p class="header__tagline">Каждая книга — новое путешествие!</p>
+        </div>
+        <img class="header__star header__star--right" src="images/decor/star.svg" alt="" aria-hidden="true">
+      </div>
+    </header>
+    <div class="page-body">
+      <aside class="sidebar">
+        <nav class="nav" id="site-nav" aria-label="Навигатор читателя" data-nav></nav>
+        <img class="sidebar__book" src="images/decor/book.svg" alt="" aria-hidden="true">
+      </aside>
+      <main class="content">
+        <div data-page-banner="workbooks"></div>
+        <div class="content-area card">
+          <div data-kit-list></div>
+        </div>
+      </main>
+    </div>
+    <footer class="footer">
+      <img class="footer__book" src="images/decor/book.svg" alt="" aria-hidden="true">
+      <p class="footer__text">Каждая книга — новое путешествие. Каждый читатель — исследователь.</p>
+    </footer>
+  </div>
+  <script src="js/utils.js"></script>
+  <script src="js/data/pages.js"></script>
+  <script src="js/data/books.js"></script>
+  <script src="js/data/workbooks.js"></script>
+  <script src="js/workbooks.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+/* Responsive */
+
+@media (max-width: 900px) {
+  .page-body {
+    flex-direction: column;
+    padding: var(--space-md);
+    gap: var(--space-md);
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .header__inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    width: min(300px, 88vw);
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    overflow-y: auto;
+    border-radius: 0;
+  }
+
+  .sidebar.is-nav-open {
+    transform: translateX(0);
+  }
+
+  .header__star {
+    width: 20px;
+    height: 20px;
+  }
+
+  .page-hero__img,
+  .page-banner__img {
+    max-height: 260px;
+  }
+
+  .book-catalog__list,
+  .hero-list,
+  .cards-list,
+  .passports-list,
+  .trials-list,
+  .kit-list,
+  .book-picker {
+    grid-template-columns: 1fr;
+  }
+
+  .expedition-card {
+    padding: var(--space-md);
+  }
+
+  .trial-detail {
+    padding: var(--space-md);
+  }
+
+  .trial-detail__actions {
+    flex-direction: column;
+  }
+
+  .trial-detail__actions .btn {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .journey-trail__list {
+    gap: 0.2rem 0.25rem;
+  }
+
+  .journey-trail__label {
+    font-size: 0.75rem;
+  }
+
+  .journey-trail__connector {
+    width: 6px;
+  }
+
+  .guess-game__choice {
+    width: 100%;
+  }
+
+  .build-card-game__options--portraits {
+    grid-template-columns: 1fr;
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .build-card-game__choice {
+    min-height: 52px;
+  }
+
+  .build-card-game__gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .assemble-card {
+    width: min(100%, 280px);
+  }
+
+  .trial-detail__pdf {
+    min-height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .sidebar {
+    transition: none;
+  }
+}
