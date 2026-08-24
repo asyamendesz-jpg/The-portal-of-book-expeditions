@@ -16,49 +16,49 @@
 
   global.ReadingPortal.banners = {
     'book-travel': {
-      image: 'images/mockups/knizhnye-puteshestviya.png',
+      image: 'images/mockups/knizhnye-puteshestviya.jpg',
       alt: 'Карта книжных путешествий',
       title: 'Книжные путешествия',
       intro: 'Выбери маршрут и отправляйся в увлекательное приключение!'
     },
     heroes: {
-      image: 'images/mockups/geroi-knig.png',
+      image: 'images/mockups/geroi-knig.jpg',
       alt: 'Герои книг',
       title: 'Герои книг',
       intro: 'Загляни внутрь книги и познакомься с героями!'
     },
     cards: {
-      image: 'images/mockups/kartochki.png',
+      image: 'images/mockups/kartochki.jpg',
       alt: 'Карточки персонажей',
       title: 'Карточки персонажей',
       intro: 'Собери коллекцию героев любимых книг!'
     },
     passports: {
-      image: 'images/mockups/kartochki.png',
+      image: 'images/mockups/kartochki.jpg',
       alt: 'Паспорта героев',
       title: 'Паспорта героев',
       intro: 'Заполни личное досье участника книжной экспедиции.'
     },
     comics: {
-      image: 'images/mockups/komiksy.png',
+      image: 'images/mockups/komiksy.jpg',
       alt: 'Комиксы читателей',
       title: 'Комиксы читателей',
       intro: 'Твои истории оживают в кадрах!'
     },
     workbooks: {
-      image: 'images/mockups/expeditsiya-start.png',
+      image: 'images/mockups/expeditsiya-start.jpg',
       alt: 'Экспедиционные комплекты',
       title: 'Экспедиционные комплекты',
       intro: 'Скачай PDF-материалы из архива путешественника.'
     },
     quiz: {
-      image: 'images/mockups/viktoriny.png',
+      image: 'images/mockups/viktoriny.jpg',
       alt: 'Викторины и загадки',
       title: 'Викторины и загадки',
       intro: 'Проверь себя, узнай новое, стань настоящим знатоком книг!'
     },
     adults: {
-      image: 'images/mockups/glavnaya.png',
+      image: 'images/mockups/glavnaya.jpg',
       alt: 'Для взрослых',
       title: 'Взрослым',
       intro: 'Материалы для родителей, учителей и библиотекарей.'

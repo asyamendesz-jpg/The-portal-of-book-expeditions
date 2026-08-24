@@ -10,7 +10,7 @@
       author: 'Кир Булычёв',
       route: 'Экспедиция №1',
       color: '#4a7cb8',
-      cover: 'images/covers/alice-journey.png',
+      cover: 'images/covers/alice-journey.jpg',
       status: 'open'
     },
     {
@@ -20,7 +20,7 @@
       author: 'Кир Булычёв',
       route: 'Экспедиция №2',
       color: '#4a7c59',
-      cover: 'images/covers/alice-asteroid.png',
+      cover: 'images/covers/alice-asteroid.jpg',
       status: 'soon'
     },
     {
@@ -30,7 +30,7 @@
       author: 'Кир Булычёв',
       route: 'Экспедиция №3',
       color: '#3d5a80',
-      cover: 'images/covers/alice-city.png',
+      cover: 'images/covers/alice-city.jpg',
       status: 'soon'
     },
     {
@@ -40,7 +40,7 @@
       author: 'Кир Булычёв',
       route: 'Экспедиция №4',
       color: '#5b4bb4',
-      cover: 'images/covers/alice-time.png',
+      cover: 'images/covers/alice-time.jpg',
       status: 'soon'
     }
   ];

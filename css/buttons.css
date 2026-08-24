@@ -64,3 +64,5 @@
   outline: 2px solid var(--gold-light);
   outline-offset: 3px;
 }
+
+.btn, .book-picker__btn, .nav-list__link, .expedition-route__link { touch-action: manipulation; }

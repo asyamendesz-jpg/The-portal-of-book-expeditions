@@ -8,42 +8,13 @@
 }
 
 .page {
-  animation: pageEnter var(--duration-slow) var(--ease-out) both;
+  /* без opacity:0 — меню и кнопки сразу доступны */
 }
 
-.content {
-  animation: contentRise var(--duration-slow) var(--ease-out) 0.08s both;
-}
+.content { /* no entrance animation — buttons available immediately */ }
 
 .sidebar {
-  animation: sidebarSlide var(--duration-slow) var(--ease-out) 0.04s both;
-}
-
-@keyframes pageEnter {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes contentRise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes sidebarSlide {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  animation: none;
 }
 
 .header__star {
@@ -80,30 +51,29 @@
 }
 
 .nav-list__link:hover .nav-list__icon {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
-.card,
+.btn--cta {
+  transition: transform 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out);
+}
+
+.btn--cta:active {
+  transform: scale(0.98);
+}
+
 .book-card,
 .hero-card,
 .note-card,
 .passport-card,
-.trial-card,
-.kit-card,
-.book-picker__btn {
+.trial-card {
   transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
 }
 
-.card:hover,
 .book-card:hover,
 .hero-card:hover,
-.note-card:hover,
-.passport-card:hover,
-.trial-card:hover,
-.kit-card:hover,
-.book-picker__btn:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+.note-card:hover {
+  transform: translateY(-3px);
 }
 
 .book-catalog__item,
@@ -112,20 +82,20 @@
 .passports-list__item,
 .trials-list__item,
 .kit-list__item {
-  animation: cardAppear var(--duration-slow) var(--ease-out) both;
+  animation: none;
 }
 
 .book-catalog__item:nth-child(1),
 .hero-list__item:nth-child(1),
-.cards-list__item:nth-child(1) { animation-delay: 0.05s; }
+.cards-list__item:nth-child(1) { animation-delay: 0s; }
 
 .book-catalog__item:nth-child(2),
 .hero-list__item:nth-child(2),
-.cards-list__item:nth-child(2) { animation-delay: 0.1s; }
+.cards-list__item:nth-child(2) { animation-delay: 0s; }
 
 .book-catalog__item:nth-child(3),
 .hero-list__item:nth-child(3),
-.cards-list__item:nth-child(3) { animation-delay: 0.15s; }
+.cards-list__item:nth-child(3) { animation-delay: 0s; }
 
 @keyframes cardAppear {
   from {
@@ -177,7 +147,8 @@
   *,
   *::before,
   *::after {
-    animation: none !important;
-    transition: none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
