@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Внеклассное чтение — Взрослым</title>
+  <title>Внеклассное чтение — Полевое задание</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/theme.css">
 </head>
-<body class="page--adults">
+<body class="page--field-task">
   <div class="page">
     <header class="header">
       <div class="header__inner">
@@ -33,19 +33,8 @@
         <img class="sidebar__book" src="images/decor/book.svg" alt="" aria-hidden="true">
       </aside>
       <main class="content">
-        <div data-page-banner="adults"></div>
         <div class="content-area card">
-          <div class="guide-block">
-            <h3 class="guide-block__title">Как сопровождать экспедицию</h3>
-            <ul class="guide-block__list">
-              <li>Начните с раздела «Книжные путешествия» — выберите «Путешествие Алисы».</li>
-              <li>Изучите героев вместе с ребёнком, не подсказывая ответы сразу.</li>
-              <li>Скачайте экспедиционный комплект и проходите задания в своём темпе.</li>
-              <li>Обсуждайте прочитанное — это главная цель проекта.</li>
-              <li>Полевое задание ребёнок делает руками вне экрана. Отметить «Я выполнил» можно без фото.</li>
-              <li>Загрузка фото в Дневник пока не подключена: для безопасного хранения нужен отдельный backend. Не публикуйте работы детей в открытый доступ.</li>
-            </ul>
-          </div>
+          <div data-field-task></div>
         </div>
       </main>
     </div>
@@ -56,6 +45,11 @@
   </div>
   <script src="js/utils.js"></script>
   <script src="js/data/pages.js"></script>
+  <script src="js/data/journey.js"></script>
+  <script src="js/data/field-tasks.js"></script>
+  <script src="js/journey.js"></script>
+  <script src="js/diary.js"></script>
+  <script src="js/field-task.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

@@ -75,8 +75,8 @@
 
       var again = document.createElement('a');
       again.className = 'btn btn--secondary';
-      again.href = 'trial-cards.html';
-      again.textContent = 'Послушать эпизод ещё раз';
+      again.href = 'diary.html';
+      again.textContent = 'Открыть Дневник экспедиции';
       actions.appendChild(again);
     }
 

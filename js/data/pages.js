@@ -7,6 +7,7 @@
     { href: 'book-travel.html', label: 'Книжные путешествия', icon: 'images/icons/travel.svg' },
     { href: 'heroes.html', label: 'Герои книг', icon: 'images/icons/heroes.svg' },
     { href: 'cards.html', label: 'Карточки персонажей', icon: 'images/icons/cards.svg' },
+    { href: 'diary.html', label: 'Дневник экспедиции', icon: 'images/icons/passports.svg' },
     { href: 'passports.html', label: 'Паспорта героев', icon: 'images/icons/passports.svg' },
     { href: 'comics.html', label: 'Комиксы читателей', icon: 'images/icons/comics.svg' },
     { href: 'workbooks.html', label: 'Экспедиционные комплекты', icon: 'images/icons/workbooks.svg' },
@@ -73,6 +74,8 @@
     { icon: '✏️', text: 'Выполни задания', href: 'trial-tasks.html' },
     { icon: '🔍', text: 'Узнай героя по описанию', href: 'cards.html?mode=guess' },
     { icon: '🃏', text: 'Собери карточку персонажа', href: 'cards.html?mode=build' },
+    { icon: '✏️', text: 'Полевое задание — нарисуй планету', href: 'field-task.html' },
+    { icon: '📔', text: 'Дневник экспедиции', href: 'diary.html' },
     { icon: '🏆', text: 'Посмотри достижения', href: 'achievements.html' }
   ];
 })(window);

@@ -487,13 +487,12 @@
 
       if (portal.markJourneyFlag) {
         portal.markJourneyFlag('characterCardCompleted');
-        portal.markJourneyFlag('expeditionCompleted');
       }
 
       var cta = document.createElement('a');
       cta.className = 'btn btn--cta';
-      cta.href = 'achievements.html';
-      cta.textContent = 'Посмотреть достижения →';
+      cta.href = 'field-task.html';
+      cta.textContent = 'К полевому заданию →';
       wrap.appendChild(cta);
 
       var replay = document.createElement('button');
