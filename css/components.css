@@ -46,6 +46,10 @@
   color: var(--ink-soft);
 }
 
+.expedition-card__lead {
+  margin-bottom: var(--space-lg);
+}
+
 .expedition-route {
   list-style: none;
   margin: 0 0 var(--space-lg);
@@ -190,7 +194,7 @@
   background: var(--parchment);
   border: 2px solid rgba(26, 40, 64, 0.12);
   border-radius: 999px;
-  cursor: default;
+  cursor: pointer;
 }
 
 .quiz-tabs__btn.is-active {
@@ -735,6 +739,20 @@
   line-height: 1.55;
 }
 
+.achievements__percent {
+  margin: 0 0 var(--space-md);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.achievements__comics-lead {
+  margin: var(--space-md) 0 var(--space-sm);
+  max-width: 420px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
 .achievements__list {
   list-style: none;
   margin: 0 auto var(--space-lg);
@@ -1002,4 +1020,202 @@
 
 .adult-survey__skip:hover {
   color: var(--navy);
+}
+
+/* Action bar на главной */
+.action-bar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-sm);
+  margin: 0 0 var(--space-lg);
+}
+
+.action-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  min-height: 88px;
+  padding: var(--space-sm);
+  text-decoration: none;
+  text-align: center;
+  color: var(--navy);
+  background: var(--parchment-card);
+  border: 1px solid rgba(26, 40, 64, 0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-weight: 800;
+}
+
+.action-bar__item:hover {
+  border-color: var(--gold-light);
+  color: var(--navy-light);
+}
+
+.action-bar__label {
+  font-size: 0.95rem;
+}
+
+.action-bar__hint {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+/* Карта глав */
+.travel-map {
+  padding: var(--space-md);
+}
+
+.travel-map__list {
+  list-style: none;
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.chapter-card {
+  height: 100%;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.chapter-card__badge {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.chapter-card__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.chapter-card__text {
+  margin: 0;
+  flex: 1;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.chapter-card__link {
+  align-self: stretch;
+}
+
+/* Викторины — как это работает + поиск */
+.quiz-how {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--parchment);
+  border-radius: var(--radius-sm);
+}
+
+.quiz-how__title {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--navy);
+  text-align: center;
+}
+
+.quiz-how__list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--ink-soft);
+}
+
+.quiz-how__item {
+  margin-bottom: 0.45rem;
+  line-height: 1.5;
+}
+
+.quiz-how__item:last-child {
+  margin-bottom: 0;
+}
+
+.quiz-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.quiz-search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.quiz-search__label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.quiz-search__input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid rgba(26, 40, 64, 0.12);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--white);
+}
+
+.quiz-search__input:focus {
+  outline: none;
+  border-color: var(--navy-light);
+}
+
+/* Комиксы — заглушка галереи */
+.comics-soon {
+  padding: var(--space-md);
+}
+
+.comics-soon__grid {
+  list-style: none;
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-md);
+}
+
+.comics-soon__slot {
+  text-align: center;
+}
+
+.comics-soon__frame {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-sm);
+  border: 2px dashed rgba(26, 40, 64, 0.18);
+  background:
+    linear-gradient(135deg, rgba(212, 168, 67, 0.12), transparent 55%),
+    var(--parchment);
+}
+
+.comics-soon__label {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.note-card__more {
+  margin-top: var(--space-sm);
+  width: 100%;
 }

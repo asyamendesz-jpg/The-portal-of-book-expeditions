@@ -12,6 +12,7 @@
     characterQuizCompleted: false,
     characterCardCompleted: false,
     fieldTaskCompleted: false,
+    diaryViewed: false,
     expeditionCompleted: false
   };
 
@@ -93,6 +94,7 @@
       progress.characterQuizCompleted ||
       progress.characterCardCompleted ||
       progress.fieldTaskCompleted ||
+      progress.diaryViewed ||
       progress.expeditionCompleted
     );
   };
@@ -264,13 +266,13 @@
     if (!cta) return;
 
     if (portal.hasJourneyProgress() && !portal.getJourneyProgress().expeditionCompleted) {
-      cta.textContent = '🚀 ПРОДОЛЖИТЬ ЭКСПЕДИЦИЮ';
+      cta.textContent = 'Продолжить экспедицию';
       cta.href = portal.getResumeHref();
     } else if (portal.getJourneyProgress().expeditionCompleted) {
-      cta.textContent = '🚀 СНОВА В ЭКСПЕДИЦИЮ';
+      cta.textContent = 'Снова в экспедицию';
       cta.href = 'book-travel.html';
     } else {
-      cta.textContent = '🚀 НАЧАТЬ ЭКСПЕДИЦИЮ';
+      cta.textContent = 'Начать экспедицию';
       cta.href = 'book-travel.html';
     }
   };

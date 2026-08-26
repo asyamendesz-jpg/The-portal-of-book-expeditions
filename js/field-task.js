@@ -3,11 +3,6 @@
 
   var portal = window.ReadingPortal;
 
-  function getTask() {
-    var id = portal.getQueryParam('task');
-    return portal.getFieldTaskById(id);
-  }
-
   function renderDone(root, task) {
     root.innerHTML = '';
 
@@ -30,18 +25,11 @@
     actions.className = 'field-task__actions';
 
     var diary = document.createElement('a');
-    diary.className = 'btn btn--secondary';
-    diary.href = 'diary.html';
-    diary.textContent = 'Открыть Дневник';
-
-    var cont = document.createElement('a');
-    cont.className = 'btn btn--cta';
-    cont.href = task.nextHref || 'achievements.html';
-    cont.textContent = task.nextLabel || 'Продолжить экспедицию →';
+    diary.className = 'btn btn--cta';
+    diary.href = task.nextHref || 'diary.html';
+    diary.textContent = task.nextLabel || 'Открыть Дневник →';
 
     actions.appendChild(diary);
-    actions.appendChild(cont);
-
     panel.appendChild(title);
     panel.appendChild(status);
     panel.appendChild(hint);
@@ -92,6 +80,11 @@
     panel.appendChild(hint);
     panel.appendChild(done);
     root.appendChild(panel);
+  }
+
+  function getTask() {
+    var id = portal.getQueryParam('task');
+    return portal.getFieldTaskById(id);
   }
 
   portal.onReady(function () {

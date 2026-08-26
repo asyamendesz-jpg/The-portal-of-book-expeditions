@@ -48,8 +48,8 @@
       doneBtn.type = 'button';
       doneBtn.className = 'btn btn--primary';
       doneBtn.textContent = stepId === 'episode' ? 'Я прослушал(а) →' : 'Я выполнил(а) задания →';
-      doneBtn.addEventListener('click', showDone);
       actions.appendChild(doneBtn);
+      doneBtn.addEventListener('click', showDone);
     }
 
     var iframe = document.querySelector('.trial-detail__pdf[data-src]');

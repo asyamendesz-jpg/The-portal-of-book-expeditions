@@ -118,7 +118,16 @@
   }
 
   function renderDiary(container) {
-    var entries = portal.getDiaryEntries();
+    var entries = portal.getDiaryEntries ? portal.getDiaryEntries() : [];
+
+    if (portal.markJourneyFlag) {
+      portal.markJourneyFlag('diaryViewed');
+    }
+
+    if (portal.mountJourneyChrome) {
+      portal.mountJourneyChrome({ currentStepId: 'diary' });
+    }
+
     container.innerHTML = '';
 
     var title = document.createElement('h2');
@@ -189,33 +198,10 @@
           status.className = 'diary__status is-done';
           status.textContent = '✓ Выполнено';
 
-          var actions = document.createElement('div');
-          actions.className = 'diary__item-actions';
-
-          var openTask = document.createElement('a');
-          openTask.className = 'btn btn--secondary';
-          openTask.href = 'field-task.html?task=' + encodeURIComponent(entry.taskId);
-          openTask.textContent = 'К заданию';
-          actions.appendChild(openTask);
-
-          var remove = document.createElement('button');
-          remove.type = 'button';
-          remove.className = 'btn btn--secondary diary__delete';
-          remove.textContent = 'Удалить запись';
-          remove.addEventListener('click', function () {
-            if (!window.confirm('Удалить эту запись из Дневника? Само задание можно выполнить снова.')) {
-              return;
-            }
-            portal.deleteDiaryEntry(entry.id);
-            renderDiary(container);
-          });
-          actions.appendChild(remove);
-
           item.appendChild(head);
           item.appendChild(name);
           item.appendChild(story);
           item.appendChild(status);
-          item.appendChild(actions);
           list.appendChild(item);
         });
 
@@ -236,20 +222,12 @@
     if (shouldShowAdultSurvey()) {
       renderAdultSurvey(surveyHost, nextHost);
     } else if (entries.length) {
-      var footer = document.createElement('div');
-      footer.className = 'diary__footer';
-      var cont = document.createElement('a');
-      cont.className = 'btn btn--cta';
-      cont.href = portal.getResumeHref ? portal.getResumeHref() : 'achievements.html';
-      cont.textContent = 'Продолжить экспедицию →';
-      footer.appendChild(cont);
-      container.appendChild(footer);
+      renderAchievementsCta(nextHost);
     }
   }
 
   portal.onReady(function () {
     var container = document.querySelector('[data-diary]');
-    if (!container) return;
-    renderDiary(container);
+    if (container) renderDiary(container);
   });
 })();

@@ -54,6 +54,13 @@
     article.appendChild(role);
     article.appendChild(text);
 
+    var more = document.createElement('a');
+    more.className = 'btn btn--secondary note-card__more';
+    more.href = 'heroes.html?book=' + encodeURIComponent(card.bookId || 'alice-journey') +
+      '#' + encodeURIComponent(card.heroId || card.id);
+    more.textContent = 'Подробнее';
+    article.appendChild(more);
+
     return article;
   }
 
@@ -489,18 +496,22 @@
       wrap.appendChild(text);
       wrap.appendChild(gallery);
 
-      if (portal.markJourneyFlag) {
-        portal.markJourneyFlag('characterCardCompleted');
-      }
       if (portal.track) {
         portal.track('character_card_completed', { expeditionId: 'alice-journey' });
       }
 
-      var cta = document.createElement('a');
-      cta.className = 'btn btn--cta';
-      cta.href = 'field-task.html';
-      cta.textContent = 'К полевому заданию →';
-      wrap.appendChild(cta);
+      if (portal.completeStepAndShowNext) {
+        portal.completeStepAndShowNext('card', nextHost);
+      } else {
+        if (portal.markJourneyFlag) {
+          portal.markJourneyFlag('characterCardCompleted');
+        }
+        var cta = document.createElement('a');
+        cta.className = 'btn btn--cta';
+        cta.href = 'field-task.html';
+        cta.textContent = 'К полевому заданию →';
+        wrap.appendChild(cta);
+      }
 
       var replay = document.createElement('button');
       replay.type = 'button';
@@ -508,11 +519,6 @@
       replay.textContent = 'Пройти испытание ещё раз';
       replay.addEventListener('click', showIntro);
       wrap.appendChild(replay);
-
-      if (nextHost) {
-        nextHost.hidden = true;
-        nextHost.innerHTML = '';
-      }
     }
 
     showIntro();
