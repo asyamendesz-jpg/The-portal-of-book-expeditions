@@ -21,6 +21,7 @@
     surveyId: 'photo-diary-v1',
     supabaseUrl: '',
     supabaseAnonKey: '',
+    /* Если появится серверная форма: To = ReadingPortal.siteConfig.contactEmail (hello@asyamendes.ru) */
     formEndpoint: '',
     gaMeasurementId: ''
   };

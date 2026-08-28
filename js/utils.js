@@ -56,6 +56,30 @@
     }).join('/');
   };
 
+  portal.getSiteConfig = function () {
+    return portal.siteConfig || {};
+  };
+
+  portal.getContactEmail = function () {
+    return portal.getSiteConfig().contactEmail || '';
+  };
+
+  portal.buildMailto = function (options) {
+    options = options || {};
+    var email = options.email || portal.getContactEmail();
+    if (!email) return '';
+    var href = 'mailto:' + email;
+    var params = [];
+    if (options.subject) {
+      params.push('subject=' + encodeURIComponent(options.subject));
+    }
+    if (options.body) {
+      params.push('body=' + encodeURIComponent(options.body));
+    }
+    if (params.length) href += '?' + params.join('&');
+    return href;
+  };
+
   portal.findQuiz = function (quizId) {
     var quizzes = portal.quizzes || [];
     if (!quizzes.length) return null;

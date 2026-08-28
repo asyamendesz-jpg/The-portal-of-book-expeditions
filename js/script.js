@@ -387,6 +387,76 @@
     renderHeroesJourneyPanel(selectedBookId, listEl);
   }
 
+  function initFooterContact() {
+    var email = portal.getContactEmail ? portal.getContactEmail() : '';
+    if (!email) return;
+
+    var footer = document.querySelector('.footer');
+    if (!footer || footer.querySelector('.footer__contact')) return;
+
+    var link = document.createElement('a');
+    link.className = 'footer__contact';
+    link.href = portal.buildMailto
+      ? portal.buildMailto({ subject: (portal.getSiteConfig && portal.getSiteConfig().contactSubject) || 'Внеклассное чтение' })
+      : 'mailto:' + email;
+    link.textContent = email;
+    footer.appendChild(link);
+  }
+
+  function initAdultsContact() {
+    var host = document.querySelector('[data-adults-contact]');
+    if (!host) return;
+
+    var cfg = portal.getSiteConfig ? portal.getSiteConfig() : {};
+    var email = cfg.contactEmail || (portal.getContactEmail && portal.getContactEmail());
+    if (!email) return;
+
+    host.innerHTML = '';
+    host.hidden = false;
+    host.className = 'guide-block guide-block--contact card';
+
+    var title = document.createElement('h3');
+    title.className = 'guide-block__title';
+    title.textContent = 'Связаться с автором проекта';
+
+    var lead = document.createElement('p');
+    lead.className = 'guide-block__text';
+    lead.textContent =
+      'По вопросам «Внеклассного чтения» и по полевым работам ребёнка можно написать на почту проекта. ' +
+      'Фото или скан работы приложите к письму в своей почтовой программе.';
+
+    var actions = document.createElement('div');
+    actions.className = 'guide-block__actions';
+
+    var questionLink = document.createElement('a');
+    questionLink.className = 'btn btn--secondary';
+    questionLink.href = portal.buildMailto({ subject: cfg.contactSubject });
+    questionLink.textContent = 'Задать вопрос';
+
+    var worksLink = document.createElement('a');
+    worksLink.className = 'btn btn--cta';
+    worksLink.href = portal.buildMailto({
+      subject: cfg.worksSubject,
+      body: 'Здравствуйте!\n\nПрикладываю работу ребёнка по экспедиции «Внеклассное чтение».\n\n'
+    });
+    worksLink.textContent = 'Прислать работу ребёнка';
+
+    var mail = document.createElement('p');
+    mail.className = 'guide-block__email';
+    var mailLink = document.createElement('a');
+    mailLink.className = 'footer__contact';
+    mailLink.href = portal.buildMailto();
+    mailLink.textContent = email;
+    mail.appendChild(mailLink);
+
+    actions.appendChild(questionLink);
+    actions.appendChild(worksLink);
+    host.appendChild(title);
+    host.appendChild(lead);
+    host.appendChild(actions);
+    host.appendChild(mail);
+  }
+
   function initPageBanner() {
     var bannerEl = document.querySelector('[data-page-banner]');
     if (!bannerEl) return;
@@ -428,5 +498,7 @@
     initMenu();
     initPageBanner();
     initHeroesPage();
+    initFooterContact();
+    initAdultsContact();
   });
 })();

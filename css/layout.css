@@ -181,6 +181,18 @@ img {
   text-align: center;
 }
 
+.footer__contact {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.footer__contact:hover,
+.footer__contact:focus-visible {
+  text-decoration: underline;
+}
+
 .card {
   background: var(--parchment-card);
   border: 1px solid rgba(26, 40, 64, 0.08);

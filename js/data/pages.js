@@ -80,4 +80,14 @@
     { icon: '9.', text: 'Дневник', href: 'diary.html' },
     { icon: '10.', text: 'Достижения', href: 'achievements.html' }
   ];
+
+  /**
+   * Контакты проекта «Внеклассное чтение».
+   * Не путать с work@asyamendes.ru (проект Portfo).
+   */
+  global.ReadingPortal.siteConfig = {
+    contactEmail: 'hello@asyamendes.ru',
+    contactSubject: 'Внеклассное чтение — вопрос',
+    worksSubject: 'Внеклассное чтение — работа ребёнка'
+  };
 })(window);

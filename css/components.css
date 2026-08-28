@@ -144,6 +144,27 @@
   font-size: 1.05rem;
 }
 
+.guide-block--contact {
+  margin-top: var(--space-md);
+}
+
+.guide-block__text {
+  margin: 0 0 var(--space-md);
+  line-height: 1.6;
+}
+
+.guide-block__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.guide-block__email {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
 .guide-block {
   padding: var(--space-lg);
 }
